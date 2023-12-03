@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4lqr75AasDc3ULrn6brQpXKjMqcMvsq+Vo0a/MxSpUUhp6C8pQ6lT2yjPriAu2NMfOpSqllc5eHpudFeYtH9uQ==",
+  "dgSpecHash": "W0USN5UMYRBZeLMa44bh/apO/sbDnsI+nu0YiHZeq2N9KupwIarCdMlk22VV/exLB4yfnUL0IEvUAqhiFZajBA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\32465\\OneDrive - AP Hogeschool Antwerpen\\Bureaublad\\SuperStompergame\\Super-Stomper_Monogame\\Super-Stomper_Monogame\\Super-Stomper_Monogame.csproj",
+  "projectFilePath": "C:\\Users\\32465\\OneDrive - AP Hogeschool Antwerpen\\Bureaublad\\SuperStompergame\\Super-Stomper_Monogame\\Super-Stomper_Monogame\\Super_Stomper_Monogame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\32465\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
     "C:\\Users\\32465\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\1.1.0\\microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",

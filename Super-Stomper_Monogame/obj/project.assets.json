@@ -7481,9 +7481,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\32465\\OneDrive - AP Hogeschool Antwerpen\\Bureaublad\\SuperStompergame\\Super-Stomper_Monogame\\Super-Stomper_Monogame\\Super-Stomper_Monogame.csproj",
-      "projectName": "Super-Stomper_Monogame",
-      "projectPath": "C:\\Users\\32465\\OneDrive - AP Hogeschool Antwerpen\\Bureaublad\\SuperStompergame\\Super-Stomper_Monogame\\Super-Stomper_Monogame\\Super-Stomper_Monogame.csproj",
+      "projectUniqueName": "C:\\Users\\32465\\OneDrive - AP Hogeschool Antwerpen\\Bureaublad\\SuperStompergame\\Super-Stomper_Monogame\\Super-Stomper_Monogame\\Super_Stomper_Monogame.csproj",
+      "projectName": "Super_Stomper_Monogame",
+      "projectPath": "C:\\Users\\32465\\OneDrive - AP Hogeschool Antwerpen\\Bureaublad\\SuperStompergame\\Super-Stomper_Monogame\\Super-Stomper_Monogame\\Super_Stomper_Monogame.csproj",
       "packagesPath": "C:\\Users\\32465\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\32465\\OneDrive - AP Hogeschool Antwerpen\\Bureaublad\\SuperStompergame\\Super-Stomper_Monogame\\Super-Stomper_Monogame\\obj\\",
       "projectStyle": "PackageReference",

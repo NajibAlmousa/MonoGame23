@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Super-Stomper_Monogame", "Super-Stomper_Monogame\Super-Stomper_Monogame.csproj", "{231E1FEF-58E0-4F65-ABD6-0E8857FB06A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Super_Stomper_Monogame", "Super-Stomper_Monogame\Super_Stomper_Monogame.csproj", "{231E1FEF-58E0-4F65-ABD6-0E8857FB06A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
