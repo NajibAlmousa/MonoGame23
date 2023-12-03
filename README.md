@@ -1,7 +1,7 @@
 
 Monogame Project
 
-## Vereisten
+## Vereisten:
 
 - Werken met github: stuur je link via Digitap
 
