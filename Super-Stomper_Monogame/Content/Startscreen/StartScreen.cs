@@ -22,14 +22,14 @@ namespace Super_Stomper_Monogame.Content.Startscreen
         public void Drow (SpriteBatch spriteBatch)
         {
             // Game name
-           // spriteBatch.DrawString(gameName);
+            spriteBatch.DrawString(gameName);
 
             // Start Game
-          //  spriteBatch.DrawString(startText);
+            spriteBatch.DrawString(startText);
 
             // Select level
-           // spriteBatch.DrawString(levelSelectText);
-            Console.WriteLine(startText);
+            spriteBatch.DrawString(levelSelectText);
+           
         }
     }
 }
