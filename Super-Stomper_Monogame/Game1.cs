@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Super_Stomper_Monogame.Startscreen;
 
 namespace Super_Stomper_Monogame
 {
@@ -9,6 +10,8 @@ namespace Super_Stomper_Monogame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        //screenMenu
+        StartScreen StartScreen;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -28,6 +31,8 @@ namespace Super_Stomper_Monogame
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
+            StartScreen = new StartScreen(Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -45,6 +50,9 @@ namespace Super_Stomper_Monogame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            StartScreen.Draw(_spriteBatch);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
