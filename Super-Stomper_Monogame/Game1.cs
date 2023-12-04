@@ -41,7 +41,7 @@ namespace Super_Stomper_Monogame
                 Exit();
 
             // TODO: Add your update logic here
-
+            StartScreen.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 
