@@ -32,7 +32,7 @@ namespace Super_Stomper_Monogame
 
             // TODO: use this.Content to load your game content here
 
-            StartScreen = new StartScreen(Content);
+            StartScreen = new StartScreen(Content, this);
         }
 
         protected override void Update(GameTime gameTime)

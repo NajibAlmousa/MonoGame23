@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SharpDX.Direct2D1;
 using System;
 
 namespace Super_Stomper_Monogame.Startscreen
@@ -23,6 +24,8 @@ namespace Super_Stomper_Monogame.Startscreen
         private int selected;
         private KeyboardState lastKeyboardState;
 
+        private readonly Game game;
+
 
 
 
@@ -36,8 +39,9 @@ namespace Super_Stomper_Monogame.Startscreen
         private const string startText = "Start";
         private const string levelSelectText = "Select Level";
 
-        public StartScreen(ContentManager content)
+        public StartScreen(ContentManager content, Game game)
         {
+            this.game = game;
 
             this.content = content;
             selectColor = Color.Green;
@@ -52,6 +56,7 @@ namespace Super_Stomper_Monogame.Startscreen
 
 
         }
+        private GameWindow Window => game.Window;
 
         public void Update(float deltaTime)
         {
@@ -86,7 +91,7 @@ namespace Super_Stomper_Monogame.Startscreen
                             
                         }
                         // Select Level
-                        else if (selected == 1) // Select Level
+                        else if (selected == 1) 
                         {
                             selected = 0;
                             gameState = GameState.LevelSelect;
@@ -98,9 +103,12 @@ namespace Super_Stomper_Monogame.Startscreen
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-           
+            // Draw on the graphics pad.
+           // game.GraphicsDevice.SetRenderTarget(_renderTarget);
+            game.GraphicsDevice.Clear(Color.SkyBlue);
+
             // Game name
             spriteBatch.DrawString(font, gameName, new Vector2(200, 20), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
 
