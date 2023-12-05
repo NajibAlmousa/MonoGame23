@@ -124,8 +124,12 @@ namespace Super_Stomper_Monogame.Startscreen
                         currentLevel = selected + 1;
                        
                     }
+                    else if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    {
+                        selected = 0;
+                        gameState = GameState.StartMenu;
+                    }
                     break;
-                
 
             }
         }
