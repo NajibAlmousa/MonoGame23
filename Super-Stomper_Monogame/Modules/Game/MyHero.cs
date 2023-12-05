@@ -28,7 +28,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
 
             //frames
-            idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0,1,2,3 }, sprite.sourceRect.Size);
+            idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
             runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
 
 
