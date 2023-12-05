@@ -38,3 +38,4 @@ C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Su
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.pdb
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.genruntimeconfig.cache
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\ref\Super_Stomper_Monogame.dll
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\MyHero\myHero.xnb

@@ -3,13 +3,14 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct2D1;
+using Super_Stomper_Monogame.Modules.Game;
 using System;
 
 namespace Super_Stomper_Monogame.Startscreen
 {
     internal class StartScreen
     {
-
+        private MyHero myHero;
 
         private enum GameState
         {
@@ -53,6 +54,10 @@ namespace Super_Stomper_Monogame.Startscreen
             lastKeyboardState = Keyboard.GetState();
 
             gameState = GameState.StartMenu;
+
+
+            myHero = new MyHero(content, new Vector2(200, 300));  
+
 
 
         }
@@ -130,6 +135,9 @@ namespace Super_Stomper_Monogame.Startscreen
                         gameState = GameState.StartMenu;
                     }
                     break;
+               /* case GameState.Playing:
+                    MyHero.Update(deltaTime);
+                    break;*/
 
             }
         }
@@ -157,6 +165,12 @@ namespace Super_Stomper_Monogame.Startscreen
 
                     for (int i = 0; i < numberOfLevels; i++)
                         spriteBatch.DrawString(font, "Level " + (i + 1).ToString(), new Vector2(220, 350 * (0.4f + 0.1f * i)), selected == i ? selectColor : Color.White, 0, font.MeasureString("Level " + (i + 1).ToString()) / 2, 0.5f, SpriteEffects.None, 0);
+
+                    break;
+                case GameState.Playing:
+                    myHero.Draw(spriteBatch);
+
+
 
                     break;
             }
