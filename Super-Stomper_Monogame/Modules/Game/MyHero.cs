@@ -13,6 +13,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
 
         private Animation idleAnimation;
+        private Animation runAnimation;
 
         private const int myHeroWidth = 32;
         private const int myHeroHeight = 32;
@@ -26,9 +27,12 @@ namespace Super_Stomper_Monogame.Modules.Game
         {
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
 
-            idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
+            //frames
+            idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0,1,2,3 }, sprite.sourceRect.Size);
+            runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
 
 
+            //1
             animation = idleAnimation;
 
 
