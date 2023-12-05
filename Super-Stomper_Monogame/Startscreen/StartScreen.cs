@@ -14,11 +14,11 @@ namespace Super_Stomper_Monogame.Startscreen
         private enum GameState
         {
            StartMenu,
-            LevelSelect,
-            Playing,
+           LevelSelect,
+           Playing,
         }
-      
 
+        private int currentLevel;
         private GameState gameState;
         private SpriteFont font;
         private int selected;
@@ -38,7 +38,7 @@ namespace Super_Stomper_Monogame.Startscreen
         private const string gameName = "Super Stomper";
         private const string startText = "Start";
         private const string levelSelectText = "Select Level";
-
+        private const int numberOfLevels = 2;
         public StartScreen(ContentManager content, Game game)
         {
             this.game = game;
@@ -48,7 +48,7 @@ namespace Super_Stomper_Monogame.Startscreen
             selected = 0;
 
 
-
+            currentLevel = 1;
             font = content.Load<SpriteFont>(@"Fonts\Font");
             lastKeyboardState = Keyboard.GetState();
 
@@ -63,7 +63,7 @@ namespace Super_Stomper_Monogame.Startscreen
             switch (gameState)
             {
                 case GameState.StartMenu:
-
+                    currentLevel = 1;
 
                     // Go up
                     if (Keyboard.GetState().IsKeyDown(Keys.Down) && !lastKeyboardState.IsKeyDown(Keys.Down))
@@ -99,25 +99,63 @@ namespace Super_Stomper_Monogame.Startscreen
                     }
 
                     break;
-            
+                case GameState.LevelSelect:
+                    if (Keyboard.GetState().IsKeyDown(Keys.Down) && !lastKeyboardState.IsKeyDown(Keys.Down))
+                    {
+                        selected++;
+                        selected %= numberOfLevels;
+
+                        selected -= (selected / numberOfLevels) * numberOfLevels;
+                    }
+                    else if (Keyboard.GetState().IsKeyDown(Keys.Up) && !lastKeyboardState.IsKeyDown(Keys.Up))
+                    {
+                        selected = selected > 0 ? selected - 1 : numberOfLevels - 1;
+                        selected %= numberOfLevels;
+                        selected = Math.Abs(selected);
+
+                        selected += (selected / numberOfLevels) * numberOfLevels;
+                    }
+
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !lastKeyboardState.IsKeyDown(Keys.Enter))
+                    {
+                        // Select level
+                        //hier later aanpassen
+                      //  gameState = GameState.Playing;
+                        currentLevel = selected + 1;
+                       
+                    }
+                    break;
+                
+
             }
         }
 
         public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-            // Draw on the graphics pad.
-           // game.GraphicsDevice.SetRenderTarget(_renderTarget);
+            //backgroundcolor
             game.GraphicsDevice.Clear(Color.SkyBlue);
+            switch (gameState)
+            {
 
-            // Game name
-            spriteBatch.DrawString(font, gameName, new Vector2(200, 20), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
+                case GameState.StartMenu:
+                    // Game name
+                    spriteBatch.DrawString(font, gameName, new Vector2(200, 20), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
 
-            // Start Game
+                    // Start Game
 
-            spriteBatch.DrawString(font, startText, new Vector2(180, 120), selected == 0 ? selectColor : Color.White, 0, font.MeasureString(startText) / 2, 0.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, startText, new Vector2(180, 120), selected == 0 ? selectColor : Color.White, 0, font.MeasureString(startText) / 2, 0.5f, SpriteEffects.None, 0);
 
-            // Select level
-            spriteBatch.DrawString(font, levelSelectText, new Vector2(180, 180), selected == 1 ? selectColor : Color.White, 0, font.MeasureString(levelSelectText) / 2, 0.5f, SpriteEffects.None, 0);
+                    // Select level
+                    spriteBatch.DrawString(font, levelSelectText, new Vector2(180, 180), selected == 1 ? selectColor : Color.White, 0, font.MeasureString(levelSelectText) / 2, 0.5f, SpriteEffects.None, 0);
+                    break;
+                case GameState.LevelSelect:
+                   
+
+                    for (int i = 0; i < numberOfLevels; i++)
+                        spriteBatch.DrawString(font, "Level " + (i + 1).ToString(), new Vector2(220, 350 * (0.4f + 0.1f * i)), selected == i ? selectColor : Color.White, 0, font.MeasureString("Level " + (i + 1).ToString()) / 2, 0.5f, SpriteEffects.None, 0);
+
+                    break;
+            }
         }
     }
 }
