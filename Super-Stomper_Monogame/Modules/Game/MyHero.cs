@@ -8,11 +8,11 @@ namespace Super_Stomper_Monogame.Modules.Game
 {
     internal class MyHero
     {
-       
+        private Animation animation;
         private Sprite sprite;
 
-      
-      
+
+        private Animation idleAnimation;
 
         private const int myHeroWidth = 32;
         private const int myHeroHeight = 32;
@@ -26,11 +26,14 @@ namespace Super_Stomper_Monogame.Modules.Game
         {
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
 
+            idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
+
+
+            animation = idleAnimation;
 
 
 
 
-            
         }
 
         public void Update(float deltaTime)
@@ -58,7 +61,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+            sprite.sourceRect = animation.GetCurrentFrame();
             sprite.Draw(spriteBatch, new Vector2(20, 30));
         }
     }

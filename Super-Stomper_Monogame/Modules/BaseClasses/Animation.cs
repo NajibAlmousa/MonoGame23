@@ -32,6 +32,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         {
             if (currentFrame >= frames.Length)
             {
+
                 currentFrame = looping ? 0 : currentFrame - 1;
             }
 
