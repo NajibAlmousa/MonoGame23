@@ -135,9 +135,9 @@ namespace Super_Stomper_Monogame.Startscreen
                         gameState = GameState.StartMenu;
                     }
                     break;
-               /* case GameState.Playing:
-                    MyHero.Update(deltaTime);
-                    break;*/
+               case GameState.Playing:
+                    myHero.Update(deltaTime);
+                    break;
 
             }
         }

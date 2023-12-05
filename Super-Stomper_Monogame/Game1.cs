@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Super_Stomper_Monogame.Modules.Game;
 using Super_Stomper_Monogame.Startscreen;
 
 namespace Super_Stomper_Monogame
@@ -12,11 +13,14 @@ namespace Super_Stomper_Monogame
 
         //screenMenu
         StartScreen StartScreen;
+     
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
         }
 
         protected override void Initialize()
@@ -42,6 +46,7 @@ namespace Super_Stomper_Monogame
 
             // TODO: Add your update logic here
             StartScreen.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+         
             base.Update(gameTime);
         }
 
