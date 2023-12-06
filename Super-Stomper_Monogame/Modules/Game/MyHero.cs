@@ -17,6 +17,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         private Animation idleAnimation;
         private Animation runAnimation;
+      
 
         private const int myHeroWidth = 32;
         private const int myHeroHeight = 32;
@@ -32,10 +33,12 @@ namespace Super_Stomper_Monogame.Modules.Game
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
              movement = new Movement(position);
             physics = new Physics() { dragScale = 0.05f };
-            //frames
-            idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
-            runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
 
+            //frames
+            idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0}, sprite.sourceRect.Size);
+            runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2 }, sprite.sourceRect.Size);
+           
+           
 
             //1
             animation = idleAnimation;
@@ -47,10 +50,10 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public void Update(float deltaTime)
         {
+          
 
-
-            movement.Update(deltaTime);
-            physics.Update(deltaTime);
+             movement.Update(deltaTime);
+             physics.Update(deltaTime);
 
             animation.Update(deltaTime);
             // Move right
@@ -59,6 +62,7 @@ namespace Super_Stomper_Monogame.Modules.Game
                 sprite.spriteEffects = SpriteEffects.None;
               
                 physics.desiredVelocity.X += speed;
+               
             }
             // Move left
             else if (Keyboard.GetState().IsKeyDown(Keys.Left) || Keyboard.GetState().IsKeyDown(Keys.Q))
@@ -66,12 +70,12 @@ namespace Super_Stomper_Monogame.Modules.Game
                 sprite.spriteEffects = SpriteEffects.FlipHorizontally;
             
                 physics.desiredVelocity.X -= speed;
+              
 
             }
             // effect of velocity on position 
             movement.deltaX += physics.desiredVelocity.X * deltaTime;
             movement.deltaY += physics.desiredVelocity.Y * deltaTime;
-
 
 
         }

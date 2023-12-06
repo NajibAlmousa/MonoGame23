@@ -11,14 +11,15 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         public bool started { private set; get; }
 
         private Texture2D texture;
-       
         private int[] frames;
         private Point frameSize;
+        private float timeBetweenFrames;
+        private float timer;
 
         public Animation(Texture2D texture, float timeBetweenFrames, bool looping, int[] frames, Point frameSize)
         {
             this.texture = texture;
-           
+            this.timeBetweenFrames = timeBetweenFrames;
             this.looping = looping;
             this.frames = frames;
             this.frameSize = frameSize;
@@ -30,6 +31,11 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 
         public void Update(float deltaTime)
         {
+            timer += deltaTime;
+            int passedAFrame = (int)(timer / timeBetweenFrames);
+            timer -= passedAFrame * timeBetweenFrames;
+            currentFrame += passedAFrame;
+
             if (currentFrame >= frames.Length)
             {
 
@@ -39,7 +45,15 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 
         }
 
-        
+
+        public void Reset(bool start = false)
+        {
+            currentFrame = 0;
+            finished = false;
+            started = start;
+            timer = 0;
+        }
+
         public Rectangle GetCurrentFrame() => new Rectangle((frames[currentFrame] * frameSize.X) % texture.Width, ((frames[currentFrame] * frameSize.X) / texture.Width) * frameSize.Y, frameSize.X, frameSize.Y);
 
 
