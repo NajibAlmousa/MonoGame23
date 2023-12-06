@@ -10,7 +10,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         public Color color;
         public SpriteEffects spriteEffects;
         public Rectangle sourceRect;
-
+        
         public Vector2 position { private set; get; }
         public Texture2D texture { private set; get; }
 
