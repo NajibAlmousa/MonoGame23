@@ -22,10 +22,10 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int myHeroWidth = 32;
         private const int myHeroHeight = 32;
         private const int speed = 12;
+        private const int maxSpeed = 150;
 
 
-        
-    
+
 
 
         public MyHero(ContentManager content, Vector2 position)
@@ -36,7 +36,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             //frames
             idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
-            runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2,3,0 }, sprite.sourceRect.Size);
+            runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2,3 }, sprite.sourceRect.Size);
            
            
 
@@ -91,7 +91,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             }
 
 
-
+            physics.desiredVelocity.X = System.Math.Clamp(physics.desiredVelocity.X, -maxSpeed, maxSpeed);
 
         }
 
