@@ -10,21 +10,31 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 {
     internal class Physics
     {
+        // springen
         public Vector2 velocity;
         public Vector2 desiredVelocity;
         public float dragScale;
+        public bool affectedByGravity;
+        public float fallingGravityScale;
+        public float risingGravityScale;
 
+        private const float gravityConstant = 2;
         public Physics()
         {
             velocity = Vector2.Zero;
             desiredVelocity = Vector2.Zero;
+            affectedByGravity = true;
+            fallingGravityScale = 1;
+            risingGravityScale = 1;
+            dragScale = 1;
+
         }
 
         public void Update(float deltaTime)
         {
             
             desiredVelocity.X -= desiredVelocity.X * dragScale;
-           
+            desiredVelocity.Y += gravityConstant * (desiredVelocity.Y >= 0 ? fallingGravityScale : risingGravityScale);
         }
 
     }
