@@ -123,7 +123,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             else if (physics.velocity == Vector2.Zero) 
             {
                 animation = idleAnimation;
-                animation.Reset();
+                //animation.Reset();
                 canJump = true;
             }
             else
