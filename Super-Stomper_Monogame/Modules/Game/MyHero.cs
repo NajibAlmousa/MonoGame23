@@ -26,7 +26,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int myHeroWidth = 32;
         private const int myHeroHeight = 32;
         private const int speed = 12;
-        private const int maxSpeed = 150;
+        private const int maxSpeed = 60;
         private const int jumpForce = 40;
 
 
@@ -39,7 +39,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
             movement = new Movement(position);
-            physics = new Physics() { dragScale = 0.05f };
+            physics = new Physics() { affectedByGravity = true, dragScale = 0.05f, fallingGravityScale = 1.5f };
 
             //frames
             idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
@@ -70,16 +70,18 @@ namespace Super_Stomper_Monogame.Modules.Game
             // hero move
             if (Keyboard.GetState().IsKeyDown(Keys.Right) || Keyboard.GetState().IsKeyDown(Keys.D))
             {
-                sprite.spriteEffects = SpriteEffects.None;
               
                 physics.desiredVelocity.X += speed;
-               // isMoving = true; 
+
+                sprite.spriteEffects = SpriteEffects.None;
+                // isMoving = true; 
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Left) || Keyboard.GetState().IsKeyDown(Keys.Q))
             {
-                sprite.spriteEffects = SpriteEffects.FlipHorizontally;
-            
                 physics.desiredVelocity.X -= speed;
+
+                sprite.spriteEffects = SpriteEffects.FlipHorizontally;
+
                 //isMoving = true;
 
             }
@@ -123,7 +125,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             else if (physics.velocity == Vector2.Zero) 
             {
                 animation = idleAnimation;
-                animation.Reset();
+                //animation.Reset();
                 canJump = true;
             }
             else

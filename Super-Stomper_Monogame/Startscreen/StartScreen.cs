@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Super_Stomper_Monogame.Modules.BaseClasses;
 using Super_Stomper_Monogame.Modules.Game;
 using System;
 
@@ -29,7 +30,7 @@ namespace Super_Stomper_Monogame.Startscreen
 
 
 
-
+        private readonly Windowbox windowbox;
         private readonly ContentManager content;
         private readonly Color selectColor;
 
@@ -39,8 +40,10 @@ namespace Super_Stomper_Monogame.Startscreen
         private const string startText = "Start";
         private const string levelSelectText = "Select Level";
         private const int numberOfLevels = 2;
-        public StartScreen(ContentManager content, Game game)
+        public StartScreen(ContentManager content, Windowbox windowbox)
         {
+
+            this.windowbox = windowbox;
             this.game = game;
 
             this.content = content;
@@ -124,7 +127,7 @@ namespace Super_Stomper_Monogame.Startscreen
                     {
                         // Select level
                         //hier later aanpassen
-                      //  gameState = GameState.Playing;
+                      // gameState = GameState.Playing;
                         currentLevel = selected + 1;
                        
                     }
@@ -139,25 +142,28 @@ namespace Super_Stomper_Monogame.Startscreen
                     break;
 
             }
+            lastKeyboardState = Keyboard.GetState();
         }
 
         public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
             //backgroundcolor
             game.GraphicsDevice.Clear(Color.SkyBlue);
+
+            Point windowSize = windowbox.GetScaledRect().Size;
             switch (gameState)
             {
 
                 case GameState.StartMenu:
                     // Game name
-                    spriteBatch.DrawString(font, gameName, new Vector2(200, 20), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, gameName, new Vector2(windowSize.X, windowSize.Y), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
 
                     // Start Game
 
-                    spriteBatch.DrawString(font, startText, new Vector2(180, 120), selected == 0 ? selectColor : Color.White, 0, font.MeasureString(startText) / 2, 0.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, startText, new Vector2(windowSize.X, windowSize.Y ), selected == 0 ? selectColor : Color.White, 0, font.MeasureString(startText) / 2, 0.5f, SpriteEffects.None, 0);
 
                     // Select level
-                    spriteBatch.DrawString(font, levelSelectText, new Vector2(180, 180), selected == 1 ? selectColor : Color.White, 0, font.MeasureString(levelSelectText) / 2, 0.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, levelSelectText, new Vector2(windowSize.X, windowSize.Y), selected == 1 ? selectColor : Color.White, 0, font.MeasureString(levelSelectText) / 2, 0.5f, SpriteEffects.None, 0);
                     break;
                 case GameState.LevelSelect:
                    
