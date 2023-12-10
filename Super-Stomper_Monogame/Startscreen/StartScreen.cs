@@ -148,7 +148,7 @@ namespace Super_Stomper_Monogame.Startscreen
         public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
             //backgroundcolor
-            game.GraphicsDevice.Clear(Color.SkyBlue);
+          // game.GraphicsDevice.Clear(Color.SkyBlue);
 
             Point windowSize = windowbox.GetScaledRect().Size;
             switch (gameState)

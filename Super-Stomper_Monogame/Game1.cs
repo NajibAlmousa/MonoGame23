@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Super_Stomper_Monogame.Modules.BaseClasses;
 using Super_Stomper_Monogame.Modules.Game;
 using Super_Stomper_Monogame.Startscreen;
 
@@ -13,7 +14,12 @@ namespace Super_Stomper_Monogame
 
         //screenMenu
         StartScreen StartScreen;
-     
+        private Windowbox windowbox;
+
+        //schermvergroten
+        public const int designedResolutionWidth = 320;
+        public const int designedResolutionHeight = 256;
+
 
         public Game1()
         {
@@ -35,8 +41,14 @@ namespace Super_Stomper_Monogame
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            _graphics.PreferredBackBufferWidth = designedResolutionWidth * 3;
+            _graphics.PreferredBackBufferHeight = designedResolutionHeight * 3;
+            _graphics.ApplyChanges();
 
-            StartScreen = new StartScreen(Content, this);
+            windowbox = new Windowbox(this, designedResolutionWidth, designedResolutionHeight);
+            StartScreen = new StartScreen(Content, windowbox);
+
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -52,7 +64,9 @@ namespace Super_Stomper_Monogame
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            //GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.SkyBlue);
+
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();

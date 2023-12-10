@@ -30,14 +30,63 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 
             clearColor = new Color(0xff181818);
 
-            
+            game.Window.ClientSizeChanged += (s, e) => SetDesignResolution();
+
+
+
         }
 
         private GameWindow Window => game.Window;
-        
+        private float DesignedResolutionAspectRatio =>
+            designedResolutionWidth / (float)designedResolutionHeight;
+
         public int DesignedResolutionWidth => designedResolutionWidth;
         public int DesignedResolutionHeight => designedResolutionHeight;
 
         public Rectangle GetScaledRect() => new Rectangle(Point.Zero, (_renderScaleRectangle.Size.ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(designedResolutionWidth, designedResolutionHeight))).ToPoint());
+
+
+        public void Draw()
+        {
+
+            game.GraphicsDevice.Clear(Color.SkyBlue);
+        }
+
+
+
+        public void SetDesignResolution()
+        {
+            _renderTarget = new RenderTarget2D(game.GraphicsDevice,
+                    designedResolutionWidth, designedResolutionHeight,
+                    false,
+                    SurfaceFormat.Color, DepthFormat.None, 0,
+                    RenderTargetUsage.DiscardContents);
+
+            _renderScaleRectangle = GetScaleRectangle();
+
+           
+            Rectangle GetScaleRectangle()
+            {
+                var variance = 0.5;
+                var actualAspectRatio = Window.ClientBounds.Width / (float)Window.ClientBounds.Height;
+
+                Rectangle scaleRectangle;
+
+                if (actualAspectRatio <= DesignedResolutionAspectRatio)
+                {
+                    var presentHeight = (int)(Window.ClientBounds.Width / DesignedResolutionAspectRatio + variance);
+                    var barHeight = (Window.ClientBounds.Height - presentHeight) / 2;
+                    scaleRectangle = new Rectangle(0, barHeight, Window.ClientBounds.Width, presentHeight);
+                }
+                else
+                {
+                    var presentWidth = (int)(Window.ClientBounds.Height * DesignedResolutionAspectRatio + variance);
+                    var barWidth = (Window.ClientBounds.Width - presentWidth) / 2;
+                    scaleRectangle = new Rectangle(barWidth, 0, presentWidth, Window.ClientBounds.Height);
+                }
+
+                return scaleRectangle;
+            }
+        }
     }
 }
