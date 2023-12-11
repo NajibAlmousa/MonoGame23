@@ -16,7 +16,7 @@ namespace Super_Stomper_Monogame.Startscreen
         {
            StartMenu,
            LevelSelect,
-           Playing,
+           Playing
         }
 
         private int currentLevel;
@@ -44,7 +44,7 @@ namespace Super_Stomper_Monogame.Startscreen
         {
 
             this.windowbox = windowbox;
-            this.game = game;
+            this.game = new Game();
 
             this.content = content;
             selectColor = Color.Green;
@@ -58,12 +58,12 @@ namespace Super_Stomper_Monogame.Startscreen
             gameState = GameState.StartMenu;
 
 
-            myHero = new MyHero(content, new Vector2(200, 300));  
+            myHero = new MyHero(content, new Vector2(20, 40));
 
 
 
         }
-        private GameWindow Window => game.Window;
+        //private GameWindow Window => game.Window;
 
         public void Update(float deltaTime)
         {
@@ -96,6 +96,8 @@ namespace Super_Stomper_Monogame.Startscreen
                         {
                             gameState = GameState.Playing;
                             
+
+
                         }
                         // Select Level
                         else if (selected == 1) 
@@ -103,6 +105,7 @@ namespace Super_Stomper_Monogame.Startscreen
                             selected = 0;
                             gameState = GameState.LevelSelect;
                         }
+                        
                     }
 
                     break;
@@ -127,7 +130,7 @@ namespace Super_Stomper_Monogame.Startscreen
                     {
                         // Select level
                         //hier later aanpassen
-                      // gameState = GameState.Playing;
+                      //gameState = GameState.Playing;
                         currentLevel = selected + 1;
                        
                     }
@@ -138,7 +141,9 @@ namespace Super_Stomper_Monogame.Startscreen
                     }
                     break;
                case GameState.Playing:
-                    myHero.Update(deltaTime);
+                    //MyHero hero = new MyHero(content, new Vector2 (20, 40));
+                   myHero.Update(deltaTime);
+
                     break;
 
             }
@@ -173,7 +178,15 @@ namespace Super_Stomper_Monogame.Startscreen
 
                     break;
                 case GameState.Playing:
+                    
+                    
+                    
                     myHero.Draw(spriteBatch);
+                    
+                 
+                        
+                    
+
 
 
 

@@ -105,8 +105,8 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             // Display the contents of the graphics buffer window-wide.
             game.GraphicsDevice.SetRenderTarget(null);
             game.GraphicsDevice.Clear(ClearOptions.Target, clearColor, 1.0f, 0);
-          //  spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, samplerState: samplerState);
-          //  spriteBatch.Draw(_renderTarget, _renderScaleRectangle, Color.White);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, samplerState: samplerState);
+            spriteBatch.Draw(_renderTarget, _renderScaleRectangle, Color.White);
             spriteBatch.End();
         }
 

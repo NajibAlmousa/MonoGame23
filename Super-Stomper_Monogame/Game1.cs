@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Super_Stomper_Monogame.Modules.BaseClasses;
@@ -16,6 +17,8 @@ namespace Super_Stomper_Monogame
         StartScreen StartScreen;
         private Windowbox windowbox;
 
+     
+
         //schermvergroten
         public const int designedResolutionWidth = 320;
         public const int designedResolutionHeight = 256;
@@ -26,12 +29,14 @@ namespace Super_Stomper_Monogame
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            
 
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            //windowbox = new Windowbox(this, 800, 600); 
 
             base.Initialize();
         }
@@ -58,21 +63,24 @@ namespace Super_Stomper_Monogame
 
             // TODO: Add your update logic here
             StartScreen.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
-         
+            
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            //GraphicsDevice.Clear(Color.CornflowerBlue);
-            //GraphicsDevice.Clear(Color.SkyBlue);
+          // GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.SkyBlue);
 
 
             // TODO: Add your drawing code here
-           /* _spriteBatch.Begin();
-            StartScreen.Draw(_spriteBatch);
-            _spriteBatch.End();*/
+           // _spriteBatch.Begin();
+            //StartScreen.Draw(_spriteBatch);
+            
+            //_spriteBatch.End();
             windowbox.Draw(_spriteBatch, StartScreen.Draw, samplerState: SamplerState.PointClamp);
+
 
             base.Draw(gameTime);
         }

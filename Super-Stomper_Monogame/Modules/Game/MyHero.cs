@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Super_Stomper_Monogame.Modules.BaseClasses;
+using System;
 
 namespace Super_Stomper_Monogame.Modules.Game
 {
@@ -59,9 +60,10 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public void Update(float deltaTime)
         {
-           // bool isMoving = false; 
+            // bool isMoving = false; 
+            Console.WriteLine("MyHero Update");
 
-             movement.Update(deltaTime);
+            movement.Update(deltaTime);
              physics.Update(deltaTime);
 
           
@@ -70,7 +72,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             // hero move
             if (Keyboard.GetState().IsKeyDown(Keys.Right) || Keyboard.GetState().IsKeyDown(Keys.D))
             {
-              
+                Console.WriteLine("Moving right");
                 physics.desiredVelocity.X += speed;
 
                 sprite.spriteEffects = SpriteEffects.None;
@@ -78,6 +80,8 @@ namespace Super_Stomper_Monogame.Modules.Game
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Left) || Keyboard.GetState().IsKeyDown(Keys.Q))
             {
+                Console.WriteLine("Moving left");
+
                 physics.desiredVelocity.X -= speed;
 
                 sprite.spriteEffects = SpriteEffects.FlipHorizontally;
@@ -102,6 +106,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             //hero jump
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
+                Console.WriteLine("Jumping");
                 if (canJump)
                 {
                     animation = jumpAnimation;
@@ -139,6 +144,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            
             sprite.sourceRect = animation.GetCurrentFrame();
             sprite.Draw(spriteBatch, movement.position);
         }
