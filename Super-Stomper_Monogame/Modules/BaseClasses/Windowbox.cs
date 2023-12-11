@@ -21,6 +21,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         private RenderTarget2D _renderTarget;
 
         private Rectangle _renderScaleRectangle;
+        private bool _initilized = false;
 
         public Windowbox(Microsoft.Xna.Framework.Game game, int designedResolutionWidth, int designedResolutionHeight)
         {
@@ -43,16 +44,71 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         public int DesignedResolutionWidth => designedResolutionWidth;
         public int DesignedResolutionHeight => designedResolutionHeight;
 
+        public void Draw(SpriteBatch spriteBatch,
+            Action<SpriteBatch> renderAction,
+            /* === SpriteBatch.Begin() parameters === */
+            SpriteSortMode sortMode = SpriteSortMode.Deferred,
+            BlendState blendState = null,
+            SamplerState samplerState = null,
+            DepthStencilState depthStencilState = null,
+            RasterizerState rasterizerState = null,
+            Effect effect = null)
+        {
+            Draw(
+                spriteBatch,
+                renderAction,
+                clearColor,
+                sortMode,
+                blendState,
+                samplerState,
+                depthStencilState,
+                rasterizerState,
+                effect);
+
+        }
         public Rectangle GetScaledRect() => new Rectangle(Point.Zero, (_renderScaleRectangle.Size.ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(designedResolutionWidth, designedResolutionHeight))).ToPoint());
 
 
-        public void Draw()
+        public void Draw(
+            SpriteBatch spriteBatch,
+            Action<SpriteBatch> renderAction,
+            Color clearColor,
+            /* === SpriteBatch.Begin() parameters === */
+            SpriteSortMode sortMode = SpriteSortMode.Deferred,
+            BlendState blendState = null,
+            SamplerState samplerState = null,
+            DepthStencilState depthStencilState = null,
+            RasterizerState rasterizerState = null,
+            Effect effect = null)
         {
+            if (!_initilized)
+            {
+                SetDesignResolution();
+                _initilized = !_initilized;
+            }
 
+            // Draw on the graphics pad.
+            game.GraphicsDevice.SetRenderTarget(_renderTarget);
             game.GraphicsDevice.Clear(Color.SkyBlue);
+
+            spriteBatch.Begin(
+                sortMode,
+                blendState, samplerState,
+                depthStencilState,
+                rasterizerState,
+                effect); 
+
+            renderAction?.Invoke(spriteBatch);
+
+            spriteBatch.End();
+
+            // Display the contents of the graphics buffer window-wide.
+            game.GraphicsDevice.SetRenderTarget(null);
+            game.GraphicsDevice.Clear(ClearOptions.Target, clearColor, 1.0f, 0);
+          //  spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, samplerState: samplerState);
+          //  spriteBatch.Draw(_renderTarget, _renderScaleRectangle, Color.White);
+            spriteBatch.End();
         }
-
-
 
         public void SetDesignResolution()
         {

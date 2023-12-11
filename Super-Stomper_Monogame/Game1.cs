@@ -65,13 +65,14 @@ namespace Super_Stomper_Monogame
         protected override void Draw(GameTime gameTime)
         {
             //GraphicsDevice.Clear(Color.CornflowerBlue);
-            GraphicsDevice.Clear(Color.SkyBlue);
+            //GraphicsDevice.Clear(Color.SkyBlue);
 
 
             // TODO: Add your drawing code here
-            _spriteBatch.Begin();
+           /* _spriteBatch.Begin();
             StartScreen.Draw(_spriteBatch);
-            _spriteBatch.End();
+            _spriteBatch.End();*/
+            windowbox.Draw(_spriteBatch, StartScreen.Draw, samplerState: SamplerState.PointClamp);
 
             base.Draw(gameTime);
         }

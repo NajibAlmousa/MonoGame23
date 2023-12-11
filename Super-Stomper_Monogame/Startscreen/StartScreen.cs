@@ -156,14 +156,14 @@ namespace Super_Stomper_Monogame.Startscreen
 
                 case GameState.StartMenu:
                     // Game name
-                    spriteBatch.DrawString(font, gameName, new Vector2(windowSize.X, windowSize.Y), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, gameName, new Vector2(windowSize.X /2, windowSize.Y * 0.25f), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
 
                     // Start Game
 
-                    spriteBatch.DrawString(font, startText, new Vector2(windowSize.X, windowSize.Y ), selected == 0 ? selectColor : Color.White, 0, font.MeasureString(startText) / 2, 0.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, startText, new Vector2(windowSize.X/2, windowSize.Y * 0.5f), selected == 0 ? selectColor : Color.White, 0, font.MeasureString(startText) / 2, 0.5f, SpriteEffects.None, 0);
 
                     // Select level
-                    spriteBatch.DrawString(font, levelSelectText, new Vector2(windowSize.X, windowSize.Y), selected == 1 ? selectColor : Color.White, 0, font.MeasureString(levelSelectText) / 2, 0.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, levelSelectText, new Vector2(windowSize.X/2, windowSize.Y * 0.6f), selected == 1 ? selectColor : Color.White, 0, font.MeasureString(levelSelectText) / 2, 0.5f, SpriteEffects.None, 0);
                     break;
                 case GameState.LevelSelect:
                    
