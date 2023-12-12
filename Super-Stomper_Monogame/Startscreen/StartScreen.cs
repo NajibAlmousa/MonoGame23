@@ -5,12 +5,14 @@ using Microsoft.Xna.Framework.Input;
 using Super_Stomper_Monogame.Modules.BaseClasses;
 using Super_Stomper_Monogame.Modules.Game;
 using System;
+using System.Collections.Generic;
 
 namespace Super_Stomper_Monogame.Startscreen
 {
     internal class StartScreen
     {
         private MyHero myHero;
+        private MapLoader levelLoader;
 
         private enum GameState
         {
@@ -95,7 +97,8 @@ namespace Super_Stomper_Monogame.Startscreen
                         if (selected == 0)
                         {
                             gameState = GameState.Playing;
-                            
+
+                            levelLoader = new MapLoader(content, currentLevel);
 
 
                         }
@@ -141,8 +144,11 @@ namespace Super_Stomper_Monogame.Startscreen
                     }
                     break;
                case GameState.Playing:
-                    //MyHero hero = new MyHero(content, new Vector2 (20, 40));
-                   myHero.Update(deltaTime);
+
+                    // myHero.Update(deltaTime);
+                    MyHero hero = levelLoader.myHero;
+                    hero.Update(deltaTime);
+
 
                     break;
 
@@ -178,20 +184,13 @@ namespace Super_Stomper_Monogame.Startscreen
 
                     break;
                 case GameState.Playing:
-                    
-                    
-                    
-                    myHero.Draw(spriteBatch);
-                    
-                 
-                        
-                    
-
-
-
+              
+                  //  myHero.Draw(spriteBatch);
+                    levelLoader.myHero.Draw(spriteBatch);
 
                     break;
             }
         }
+        
     }
 }
