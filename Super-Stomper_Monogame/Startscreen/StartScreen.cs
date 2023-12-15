@@ -145,7 +145,7 @@ namespace Super_Stomper_Monogame.Startscreen
                     break;
                case GameState.Playing:
 
-                    // myHero.Update(deltaTime);
+                   
                     MyHero hero = levelLoader.myHero;
                     hero.Update(deltaTime);
 
@@ -185,7 +185,7 @@ namespace Super_Stomper_Monogame.Startscreen
                     break;
                 case GameState.Playing:
               
-                  //  myHero.Draw(spriteBatch);
+                 
                     levelLoader.myHero.Draw(spriteBatch);
 
                     break;

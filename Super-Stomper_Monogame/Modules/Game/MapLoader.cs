@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using Newtonsoft.Json;
+using Microsoft.Xna.Framework.Content;
 
 namespace Super_Stomper_Monogame.Modules.Game
 {
@@ -31,10 +32,36 @@ namespace Super_Stomper_Monogame.Modules.Game
             string jsonText = File.ReadAllText(jsonFilePath);
             Console.WriteLine(jsonText);
 
+            Root levelData = JsonConvert.DeserializeObject<Root>(jsonText);
+            levelMaxWidth = levelData.width;
 
 
             Texture2D tileset = content.Load<Texture2D>(@"Spritesheets\Environment\OverWorld");
+
+
+            for (int i = 0; i < levelData.layers.Count; i++)
+            {
+                Layer layer = levelData.layers[i];
+
+                if (layer.name == "Entities")
+                {
+                    for (int j = 0; j < layer.entities.Count; j++)
+                    {
+                        Entity entity = layer.entities[j];
+
+                        if (entity.name == "MyHero")
+                        {
+
+                            myHero = new MyHero(content, new Vector2(entity.x, entity.y));
+
+                        }
+
+
+                    }
+                }
+            }
         }
+
 
         public class Entity
         {

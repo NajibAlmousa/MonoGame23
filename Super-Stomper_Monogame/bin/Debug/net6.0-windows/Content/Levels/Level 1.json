@@ -15,7 +15,7 @@
       "gridCellsX": 40,
       "gridCellsY": 16,
       "entities": [
-        {"name": "MyHero", "id": 0, "_eid": "42066704", "x": 16, "y": 0, "originX": 0, "originY": 0};
+        {"name": "MyHero", "id": 0, "_eid": "42066704", "x": 16, "y": 0, "originX": 0, "originY": 0}
         
       ]
     },
