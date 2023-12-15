@@ -59,6 +59,16 @@ namespace Super_Stomper_Monogame.Modules.Game
 
                     }
                 }
+                else if (layer.name == "Environment")
+                {
+                    List<int> data = levelData.layers[i].data;
+                    for (int j = 0; j < data.Count; j++)
+                    {
+                        if (data[j] == -1)
+                            continue;
+                        tiles.Add(new Tile(tileset, new Rectangle((data[j] * Tile.tileWidth) % tileset.Width, ((data[j] * Tile.tileWidth) / tileset.Width) * Tile.tileHeight, Tile.tileWidth, Tile.tileHeight), new Vector2((j * levelData.layers[i].gridCellWidth) % levelData.width, ((j * levelData.layers[i].gridCellWidth) / levelData.width) * levelData.layers[i].gridCellHeight)));
+                    }
+                }
             }
         }
 

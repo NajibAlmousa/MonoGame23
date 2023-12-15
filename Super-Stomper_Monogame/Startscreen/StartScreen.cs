@@ -185,8 +185,13 @@ namespace Super_Stomper_Monogame.Startscreen
                     break;
                 case GameState.Playing:
               
-                 
+                  // myuhero
                     levelLoader.myHero.Draw(spriteBatch);
+
+                    // tile 
+                    foreach (Tile tile in levelLoader.tiles)
+                        tile.Draw(spriteBatch);
+                    
 
                     break;
             }

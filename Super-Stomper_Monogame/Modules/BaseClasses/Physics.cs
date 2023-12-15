@@ -34,7 +34,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         {
             
             desiredVelocity.X -= desiredVelocity.X * dragScale;
-            desiredVelocity.Y += gravityConstant * (desiredVelocity.Y >= 0 ? fallingGravityScale : risingGravityScale);
+           // desiredVelocity.Y += gravityConstant * (desiredVelocity.Y >= 0 ? fallingGravityScale : risingGravityScale);
             desiredVelocity.X = desiredVelocity.X >= 0 ? (float)System.Math.Floor(desiredVelocity.X) : (float)System.Math.Ceiling(desiredVelocity.X);
         }
 
