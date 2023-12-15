@@ -7,9 +7,9 @@ using Super_Stomper_Monogame.Modules.Game;
 using System;
 using System.Collections.Generic;
 
-namespace Super_Stomper_Monogame.Startscreen
+namespace Super_Stomper_Monogame.Screen
 {
-    internal class StartScreen
+    internal class GameHandler
     {
         private MyHero myHero;
         private MapLoader levelLoader;
@@ -42,7 +42,7 @@ namespace Super_Stomper_Monogame.Startscreen
         private const string startText = "Start";
         private const string levelSelectText = "Select Level";
         private const int numberOfLevels = 2;
-        public StartScreen(ContentManager content, Windowbox windowbox)
+        public GameHandler(ContentManager content, Windowbox windowbox)
         {
 
             this.windowbox = windowbox;

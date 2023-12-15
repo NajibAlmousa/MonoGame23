@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Super_Stomper_Monogame.Modules.BaseClasses;
-using Super_Stomper_Monogame.Modules.Game;
-using Super_Stomper_Monogame.Startscreen;
+using Super_Stomper_Monogame.Screen;
+    
 
 namespace Super_Stomper_Monogame
 {
@@ -14,7 +12,7 @@ namespace Super_Stomper_Monogame
         private SpriteBatch _spriteBatch;
 
         //screenMenu
-        StartScreen StartScreen;
+       private GameHandler gameHandler;
         private Windowbox windowbox;
 
      
@@ -51,7 +49,7 @@ namespace Super_Stomper_Monogame
             _graphics.ApplyChanges();
 
             windowbox = new Windowbox(this, designedResolutionWidth, designedResolutionHeight);
-            StartScreen = new StartScreen(Content, windowbox);
+            gameHandler = new GameHandler(Content, windowbox);
 
 
         }
@@ -62,7 +60,7 @@ namespace Super_Stomper_Monogame
                 Exit();*/
 
             // TODO: Add your update logic here
-            StartScreen.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            gameHandler.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             
 
             base.Update(gameTime);
@@ -79,7 +77,7 @@ namespace Super_Stomper_Monogame
             //StartScreen.Draw(_spriteBatch);
             
             //_spriteBatch.End();
-            windowbox.Draw(_spriteBatch, StartScreen.Draw, samplerState: SamplerState.PointClamp);
+            windowbox.Draw(_spriteBatch, gameHandler.Draw, samplerState: SamplerState.PointClamp);
 
 
             base.Draw(gameTime);
