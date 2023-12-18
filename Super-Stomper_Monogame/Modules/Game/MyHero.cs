@@ -11,6 +11,7 @@ namespace Super_Stomper_Monogame.Modules.Game
     {
         
         private Animation animation;
+        private Animation currentAnimation;
         private Sprite sprite;
         public Physics physics;
         public Movement movement;
@@ -27,8 +28,8 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int myHeroWidth = 32;
         private const int myHeroHeight = 32;
         private const int speed = 12;
-        private const int maxSpeed = 60;
-        private const int jumpForce = 40;
+        private const int maxSpeed = 150;
+        private const int jumpForce = 170;
 
 
 
@@ -38,8 +39,9 @@ namespace Super_Stomper_Monogame.Modules.Game
         {
             canJump = false;
 
-            sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
-            movement = new Movement(position);
+           movement = new Movement(position);
+           sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
+
            physics = new Physics() { affectedByGravity = true, dragScale = 0.05f, fallingGravityScale = 1.5f };
 
             //frames
@@ -64,10 +66,9 @@ namespace Super_Stomper_Monogame.Modules.Game
             Console.WriteLine("MyHero Update");
 
             movement.Update(deltaTime);
-             physics.Update(deltaTime);
+            physics.Update(deltaTime);
 
-          
-            animation.Update(deltaTime);
+            currentAnimation = idleAnimation;
 
             // hero move
             if (Keyboard.GetState().IsKeyDown(Keys.Right) || Keyboard.GetState().IsKeyDown(Keys.D))
@@ -77,6 +78,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
                 sprite.spriteEffects = SpriteEffects.None;
                 // isMoving = true; 
+                currentAnimation = runAnimation;
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Left) || Keyboard.GetState().IsKeyDown(Keys.Q))
             {
@@ -87,6 +89,7 @@ namespace Super_Stomper_Monogame.Modules.Game
                 sprite.spriteEffects = SpriteEffects.FlipHorizontally;
 
                 //isMoving = true;
+                currentAnimation = runAnimation;
 
             }
             
@@ -109,10 +112,16 @@ namespace Super_Stomper_Monogame.Modules.Game
                 Console.WriteLine("Jumping");
                 if (canJump)
                 {
-                    animation = jumpAnimation;
+                    currentAnimation = jumpAnimation;
                     physics.desiredVelocity.Y -= jumpForce;
                     canJump = false;
                 }
+            }
+            // Set the animation only if it's changed
+            if (animation != currentAnimation)
+            {
+                animation = currentAnimation;
+                animation.Reset();
             }
 
             physics.desiredVelocity.X = System.Math.Clamp(physics.desiredVelocity.X, -maxSpeed, maxSpeed);
@@ -124,21 +133,18 @@ namespace Super_Stomper_Monogame.Modules.Game
             //jumping or falling
             if (physics.velocity.Y != 0 || prevVelocity.Y != physics.velocity.Y)
             {
-                animation = jumpAnimation;
+               
                 canJump = false;
             }
             else if (physics.velocity == Vector2.Zero) 
             {
-                animation = idleAnimation;
+               
                 //animation.Reset();
                 canJump = true;
+                //probeer hier wat denkt moveing fa lse en onder true
             }
-            else
-            {
-                animation = runAnimation;
-                canJump = true;
-            }
-
+           
+            animation.Update(deltaTime);
             prevVelocity = physics.velocity;
         }
 

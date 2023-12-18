@@ -31,6 +31,13 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 
         public void Update(float deltaTime)
         {
+            //wnr animaatie klaat we hoeven niks te updaten
+            if (finished)
+                return;
+
+            if (frames.Length <= 1)
+                return;
+
             timer += deltaTime;
             int passedAFrame = (int)(timer / timeBetweenFrames);
             timer -= passedAFrame * timeBetweenFrames;
