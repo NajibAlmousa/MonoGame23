@@ -38,5 +38,23 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             desiredVelocity.X = desiredVelocity.X >= 0 ? (float)System.Math.Floor(desiredVelocity.X) : (float)System.Math.Ceiling(desiredVelocity.X);
         }
 
+
+        public int Collision(Movement movement, Hitbox myHitbox, Hitbox otherHitbox, bool justDetection = false)
+        {
+            // collision type 
+            // 0: no collision, 1: horizontal, 2: vertical, 3: horizontal & vertical
+            int collisionType = 0;
+            float originalDeltaX = movement.deltaX;
+            float originalDeltaY = movement.deltaY;
+            Rectangle originalRect = myHitbox.rectangle;
+            myHitbox.rectangle.Offset(
+                movement.deltaX < 0 ? (int)System.Math.Floor(movement.deltaX) : (int)System.Math.Ceiling(movement.deltaX),
+                movement.deltaY < 0 ? (int)System.Math.Floor(movement.deltaY) : (int)System.Math.Ceiling(movement.deltaY)
+            );
+            Rectangle offsetedRectangle = myHitbox.rectangle;
+            return collisionType;
+           
+        }
+
     }
 }
