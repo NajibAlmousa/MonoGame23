@@ -9,7 +9,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 {
     internal class MyHero
     {
-        
+        public Hitbox hitbox;
         private Animation animation;
         private Animation currentAnimation;
         private Sprite sprite;
@@ -40,7 +40,8 @@ namespace Super_Stomper_Monogame.Modules.Game
             canJump = false;
 
            movement = new Movement(position);
-           sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
+            hitbox = new Hitbox(new Rectangle(9, 17, myHeroWidth - 9 * 2, myHeroHeight - 17), Vector2.Zero);
+            sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
 
            physics = new Physics() { affectedByGravity = true, dragScale = 0.05f, fallingGravityScale = 1.5f };
 
@@ -67,7 +68,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             movement.Update(deltaTime);
             physics.Update(deltaTime);
-
+            hitbox.Update(movement.position);
             currentAnimation = idleAnimation;
 
             // hero move

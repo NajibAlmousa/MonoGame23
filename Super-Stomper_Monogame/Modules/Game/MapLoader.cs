@@ -5,18 +5,21 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Xna.Framework.Content;
+using Super_Stomper_Monogame.Modules.BaseClasses;
 
 namespace Super_Stomper_Monogame.Modules.Game
 {
     internal class MapLoader
     {
         public List<Tile> tiles;
+        public List<Hitbox> colliders;
         public MyHero myHero;
         public int levelMaxWidth;
 
         public MapLoader(ContentManager content, int level)
         {
             tiles = new List<Tile>();
+            colliders = new List<Hitbox>();
             myHero = null;
             levelMaxWidth = 0;
 

@@ -6,6 +6,7 @@ using Super_Stomper_Monogame.Modules.BaseClasses;
 using Super_Stomper_Monogame.Modules.Game;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Super_Stomper_Monogame.Screen
 {
@@ -148,6 +149,8 @@ namespace Super_Stomper_Monogame.Screen
                    
                     MyHero hero = levelLoader.myHero;
                     hero.Update(deltaTime);
+                    levelLoader.myHero.physics.Collision(hero.movement, myHero.hitbox);
+
 
 
                     break;

@@ -35,7 +35,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         {
 
             desiredVelocity.X -= desiredVelocity.X * dragScale;
-            //desiredVelocity.Y += gravityConstant * (desiredVelocity.Y >= 0 ? fallingGravityScale : risingGravityScale);
+            desiredVelocity.Y += gravityConstant * (desiredVelocity.Y >= 0 ? fallingGravityScale : risingGravityScale);
             desiredVelocity.X = desiredVelocity.X >= 0 ? (float)System.Math.Floor(desiredVelocity.X) : (float)System.Math.Ceiling(desiredVelocity.X);
         }
 
@@ -72,9 +72,43 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 
                 float? horiz1 = ray3.Intersects(boundingBoxH);
                 float? horiz2 = ray4.Intersects(boundingBoxH);
+
+                if ((vert1 != null || vert2 != null) && movement.deltaX != 0)
+                {
+                    collisionType += 1;
+
+                    if (!justDetection)
+                    {
+                        movement.deltaX = movement.deltaX > 0 ? otherHitbox.rectangle.Left - myHitbox.rectangle.Right : otherHitbox.rectangle.Right - myHitbox.rectangle.Left;
+
+                        movement.position = new Vector2((int)(movement.position.X), movement.position.Y);
+                        desiredVelocity.X = 0;
+                    }
+                }
+                if ((horiz1 != null || horiz2 != null) && movement.deltaY != 0)
+                {
+                    collisionType += 2;
+
+                    if (!justDetection)
+                    {
+                        movement.deltaY = movement.deltaY > 0 ? otherHitbox.rectangle.Top - myHitbox.rectangle.Bottom : otherHitbox.rectangle.Bottom - myHitbox.rectangle.Top;
+
+                        movement.position = new Vector2(movement.position.X, (int)movement.position.Y);
+
+                        if (System.Math.Sign(originalDeltaY) == System.Math.Sign(desiredVelocity.Y))
+                            desiredVelocity.Y = 0;
+                    }
+                }
             }
+            else
+                myHitbox.rectangle = originalRect;
+
+            myHitbox.Update(movement.position);
             return collisionType;
         }
+
+            
+        
         private BoundingBox GetTopBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Top, 0), new Vector3(rect.Right, rect.Top, 0));
         private BoundingBox GetBottomBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Bottom, 0), new Vector3(rect.Right, rect.Bottom, 0));
         private BoundingBox GetLeftBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Top, 0), new Vector3(rect.Left, rect.Bottom, 0));
