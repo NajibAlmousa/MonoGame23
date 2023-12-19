@@ -5,8 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Super_Stomper_Monogame.Modules.BaseClasses;
 using Super_Stomper_Monogame.Modules.Game;
 using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+
 
 namespace Super_Stomper_Monogame.Screen
 {
@@ -134,7 +133,7 @@ namespace Super_Stomper_Monogame.Screen
                     {
                         // Select level
                         //hier later aanpassen
-                      //gameState = GameState.Playing;
+                        //gameState = GameState.Playing;
                         currentLevel = selected + 1;
                        
                     }
@@ -149,7 +148,10 @@ namespace Super_Stomper_Monogame.Screen
                    
                     MyHero hero = levelLoader.myHero;
                     hero.Update(deltaTime);
-                    levelLoader.myHero.physics.Collision(hero.movement, myHero.hitbox);
+                    foreach (Hitbox hitbox in levelLoader.colliders)
+                    {
+                        levelLoader.myHero.physics.Collision(hero.movement, hero.hitbox, hitbox);
+                    }
 
 
 

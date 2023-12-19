@@ -29,7 +29,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int myHeroHeight = 32;
         private const int speed = 12;
         private const int maxSpeed = 150;
-        private const int jumpForce = 170;
+        private const int jumpForce = 85;
 
 
 
@@ -68,6 +68,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             movement.Update(deltaTime);
             physics.Update(deltaTime);
+
             hitbox.Update(movement.position);
             currentAnimation = idleAnimation;
 
@@ -115,7 +116,7 @@ namespace Super_Stomper_Monogame.Modules.Game
                 {
                     currentAnimation = jumpAnimation;
                     physics.desiredVelocity.Y -= jumpForce;
-                    canJump = false;
+                   // canJump = true;
                 }
             }
             // Set the animation only if it's changed
@@ -132,18 +133,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             movement.deltaY += physics.desiredVelocity.Y * deltaTime;
 
             //jumping or falling
-            if (physics.velocity.Y != 0 || prevVelocity.Y != physics.velocity.Y)
-            {
-               
-                canJump = false;
-            }
-            else if (physics.velocity == Vector2.Zero) 
-            {
-               
-                //animation.Reset();
-                canJump = true;
-                //probeer hier wat denkt moveing fa lse en onder true
-            }
+            
            
             animation.Update(deltaTime);
             prevVelocity = physics.velocity;

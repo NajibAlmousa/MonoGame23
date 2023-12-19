@@ -51,13 +51,19 @@ namespace Super_Stomper_Monogame.Modules.Game
                     for (int j = 0; j < layer.entities.Count; j++)
                     {
                         Entity entity = layer.entities[j];
-
-                        if (entity.name == "MyHero")
+                        switch (entity.name)
                         {
-
-                            myHero = new MyHero(content, new Vector2(entity.x, entity.y));
-
+                           
+                            case "Collider":
+                                colliders.Add(new Hitbox(new Rectangle(entity.x, entity.y, (int)entity.width, (int)entity.height), Vector2.Zero));
+                                break;
+                            case "MyHero":
+                                myHero = new MyHero(content, new Vector2(entity.x, entity.y));
+                                break;
                         }
+
+
+                        
 
 
                     }

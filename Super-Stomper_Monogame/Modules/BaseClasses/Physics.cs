@@ -26,7 +26,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             desiredVelocity = Vector2.Zero;
             affectedByGravity = true;
             fallingGravityScale = 1;
-            risingGravityScale = 1;
+            risingGravityScale = 1; 
             dragScale = 1;
 
         }
