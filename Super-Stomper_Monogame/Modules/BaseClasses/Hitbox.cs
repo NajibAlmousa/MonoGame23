@@ -13,10 +13,10 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         public Vector2 origin;
 
         private Rectangle originalRect;
-        public Hitbox(Rectangle limit, Vector2 origin)
+        public Hitbox(Rectangle bounds, Vector2 origin)
         {
             this.origin = origin;
-            rectangle = limit;
+            rectangle = bounds;
             originalRect = rectangle;
         }
 

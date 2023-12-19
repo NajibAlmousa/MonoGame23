@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
--
+
 
 
 namespace Super_Stomper_Monogame.Modules.BaseClasses
@@ -61,16 +61,24 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
                 Ray ray1 = new Ray(new Vector3(new Vector2(movement.deltaX > 0 ? myHitbox.rectangle.Right : myHitbox.rectangle.Left, myHitbox.rectangle.Top), 0), new Vector3(movement.deltaX, 0, 0));
                 Ray ray2 = new Ray(new Vector3(new Vector2(movement.deltaX > 0 ? myHitbox.rectangle.Right : myHitbox.rectangle.Left, myHitbox.rectangle.Bottom), 0), new Vector3(movement.deltaX, 0, 0));
 
+                Ray ray3 = new Ray(new Vector3(new Vector2(myHitbox.rectangle.Left, movement.deltaY > 0 ? myHitbox.rectangle.Bottom : myHitbox.rectangle.Top), 0), new Vector3(0, movement.deltaY, 0));
+                Ray ray4 = new Ray(new Vector3(new Vector2(myHitbox.rectangle.Right, movement.deltaY > 0 ? myHitbox.rectangle.Bottom : myHitbox.rectangle.Top), 0), new Vector3(0, movement.deltaY, 0));
 
                 BoundingBox boundingBoxH = movement.deltaY > 0 ? GetTopBoundingBox(otherHitbox.rectangle) : GetBottomBoundingBox(otherHitbox.rectangle);
+                BoundingBox boundingBoxV = movement.deltaX > 0 ? GetLeftBoundingBox(otherHitbox.rectangle) : GetRightBoundingBox(otherHitbox.rectangle);
 
-                
+                float? vert1 = ray1.Intersects(boundingBoxV);
+                float? vert2 = ray2.Intersects(boundingBoxV);
+
+                float? horiz1 = ray3.Intersects(boundingBoxH);
+                float? horiz2 = ray4.Intersects(boundingBoxH);
             }
             return collisionType;
         }
         private BoundingBox GetTopBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Top, 0), new Vector3(rect.Right, rect.Top, 0));
-        private BoundingBox GetBottomBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Bottom, 0), new Vector3(rect.Right, rect.Bottom, 0)
-
+        private BoundingBox GetBottomBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Bottom, 0), new Vector3(rect.Right, rect.Bottom, 0));
+        private BoundingBox GetLeftBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Top, 0), new Vector3(rect.Left, rect.Bottom, 0));
+        private BoundingBox GetRightBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Right, rect.Top, 0), new Vector3(rect.Right, rect.Bottom, 0));
 
 
     }
