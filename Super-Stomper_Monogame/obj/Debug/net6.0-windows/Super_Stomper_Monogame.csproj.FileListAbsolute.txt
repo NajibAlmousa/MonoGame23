@@ -40,5 +40,5 @@ C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Su
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\MyHero\myHero.xnb
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Environment\OverWorld.xnb
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemy\Enemy1.xnb
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Levels\Level 1.json
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\Enemy01.xnb

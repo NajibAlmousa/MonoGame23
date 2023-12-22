@@ -36,8 +36,8 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             movement = new Movement(position);
             physics = new Physics() { dragScale = 0, velocity = direction * speed * Vector2.UnitX };
-            sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\Enemy\Enemy1"), new Rectangle(0, 0, martianWidth, martianHeight), Vector2.Zero, position);
-            animation = new Animation(sprite.texture, 0.25f, true, new int[] { 0, 1 }, sprite.sourceRect.Size);
+            sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\Enemies\Enemy01"), new Rectangle(0, 0, martianWidth, martianHeight), Vector2.Zero, position);
+            animation = new Animation(sprite.texture, 0.25f, true, new int[] { 0 }, sprite.sourceRect.Size);
             hitbox = new Hitbox(new Rectangle(7, 15, martianWidth - 7 * 2, martianHeight - 15), Vector2.Zero);
 
         }
