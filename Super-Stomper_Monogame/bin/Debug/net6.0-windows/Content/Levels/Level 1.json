@@ -24,7 +24,24 @@
           "originX": 0,
           "originY": 0
         },
-
+        {
+          "name": "Martian",
+          "id": 7,
+          "_eid": "90265134",
+          "x": 416,
+          "y": 192,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Martian",
+          "id": 8,
+          "_eid": "90265134",
+          "x": 464,
+          "y": 192,
+          "originX": 0,
+          "originY": 0
+        },
         {
           "name": "Collider",
           "id": 2,
@@ -96,11 +113,12 @@
           "name": "Martian",
           "id": 1,
           "_eid": "90265134",
-          "x": 160,
-          "y": 192,
+          "x": 130,
+          "y": 152,
           "originX": 0,
           "originY": 0
         }
+      
 
       ]
     },
