@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SharpDX.Direct2D1;
 using Super_Stomper_Monogame.Modules.BaseClasses;
 using Super_Stomper_Monogame.Modules.Game;
 using System;
@@ -16,9 +17,9 @@ namespace Super_Stomper_Monogame.Screen
 
         private enum GameState
         {
-           StartMenu,
-           LevelSelect,
-           Playing
+            StartMenu,
+            LevelSelect,
+            Playing
         }
         public static Vector2 cameraPosition;
         private int currentLevel;
@@ -72,7 +73,7 @@ namespace Super_Stomper_Monogame.Screen
         {
             selected = 0;
             cameraPosition = Vector2.Zero;
-          
+
         }
 
 
@@ -89,7 +90,7 @@ namespace Super_Stomper_Monogame.Screen
                         selected++;
                         selected %= 2;
 
-                       selected -= (selected / 2) * 2;
+                        selected -= (selected / 2) * 2;
                     }
                     else if (Keyboard.GetState().IsKeyDown(Keys.Up) && !lastKeyboardState.IsKeyDown(Keys.Up)) // Go Down
                     {
@@ -112,12 +113,12 @@ namespace Super_Stomper_Monogame.Screen
 
                         }
                         // Select Level
-                        else if (selected == 1) 
+                        else if (selected == 1)
                         {
                             selected = 0;
                             gameState = GameState.LevelSelect;
                         }
-                        
+
                     }
 
                     break;
@@ -144,7 +145,7 @@ namespace Super_Stomper_Monogame.Screen
                         //hier later aanpassen
                         //gameState = GameState.Playing;
                         currentLevel = selected + 1;
-                       
+
                     }
                     else if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                     {
@@ -152,14 +153,26 @@ namespace Super_Stomper_Monogame.Screen
                         gameState = GameState.StartMenu;
                     }
                     break;
-               case GameState.Playing:
+                case GameState.Playing:
 
-                   
+
                     MyHero hero = levelLoader.myHero;
                     hero.Update(deltaTime);
                     foreach (Hitbox hitbox in levelLoader.colliders)
                     {
                         levelLoader.myHero.physics.Collision(hero.movement, hero.hitbox, hitbox);
+                        // martian collision 
+                        foreach (IEnemy martian in levelLoader.enemies)
+                        {
+                            if (martian is not Martian)
+                                continue;
+                            Martian thisMartian = (Martian)martian;
+
+                            int collisionType = thisMartian.physics.Collision(thisMartian.movement, thisMartian.hitbox, hitbox);
+
+                            if (collisionType == 1 || collisionType == 3)
+                                thisMartian.direction *= -1;
+                        }
                     }
 
 
@@ -173,7 +186,7 @@ namespace Super_Stomper_Monogame.Screen
                         martian.Update(deltaTime, hero.movement.position);
                     }
 
-                     break;
+                    break;
 
             }
             lastKeyboardState = Keyboard.GetState();
@@ -182,7 +195,7 @@ namespace Super_Stomper_Monogame.Screen
         public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
             //backgroundcolor
-          // game.GraphicsDevice.Clear(Color.SkyBlue);
+            // game.GraphicsDevice.Clear(Color.SkyBlue);
 
             Point windowSize = windowbox.GetScaledRect().Size;
             switch (gameState)
@@ -190,25 +203,25 @@ namespace Super_Stomper_Monogame.Screen
 
                 case GameState.StartMenu:
                     // Game name
-                    spriteBatch.DrawString(font, gameName, new Vector2(windowSize.X /2, windowSize.Y * 0.25f), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, gameName, new Vector2(windowSize.X / 2, windowSize.Y * 0.25f), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
 
                     // Start Game
 
-                    spriteBatch.DrawString(font, startText, new Vector2(windowSize.X/2, windowSize.Y * 0.5f), selected == 0 ? selectColor : Color.White, 0, font.MeasureString(startText) / 2, 0.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, startText, new Vector2(windowSize.X / 2, windowSize.Y * 0.5f), selected == 0 ? selectColor : Color.White, 0, font.MeasureString(startText) / 2, 0.5f, SpriteEffects.None, 0);
 
                     // Select level
-                    spriteBatch.DrawString(font, levelSelectText, new Vector2(windowSize.X/2, windowSize.Y * 0.6f), selected == 1 ? selectColor : Color.White, 0, font.MeasureString(levelSelectText) / 2, 0.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, levelSelectText, new Vector2(windowSize.X / 2, windowSize.Y * 0.6f), selected == 1 ? selectColor : Color.White, 0, font.MeasureString(levelSelectText) / 2, 0.5f, SpriteEffects.None, 0);
                     break;
                 case GameState.LevelSelect:
-                   
+
 
                     for (int i = 0; i < numberOfLevels; i++)
                         spriteBatch.DrawString(font, "Level " + (i + 1).ToString(), new Vector2(220, 350 * (0.4f + 0.1f * i)), selected == i ? selectColor : Color.White, 0, font.MeasureString("Level " + (i + 1).ToString()) / 2, 0.5f, SpriteEffects.None, 0);
 
                     break;
                 case GameState.Playing:
-              
-                  // myuhero
+
+                    // myuhero
                     levelLoader.myHero.Draw(spriteBatch);
 
                     // tile 
@@ -223,6 +236,6 @@ namespace Super_Stomper_Monogame.Screen
                     break;
             }
         }
-        
+
     }
 }
