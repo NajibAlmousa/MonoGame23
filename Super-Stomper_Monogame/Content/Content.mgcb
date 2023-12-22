@@ -20,7 +20,7 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Font.spritefont
 
-#begin Spritesheets/Enemies/Enemy01.png
+#begin Spritesheets/Enemies/AllEnemies.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -30,7 +30,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Spritesheets/Enemies/Enemy01.png
+/build:Spritesheets/Enemies/AllEnemies.png
 
 #begin Spritesheets/Environment/OverWorld.png
 /importer:TextureImporter
