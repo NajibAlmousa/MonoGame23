@@ -165,6 +165,13 @@ namespace Super_Stomper_Monogame.Screen
 
                     // Clamp camera position to not go offscreen
                     cameraPosition.X = Math.Clamp(-hero.movement.position.X + Game1.designedResolutionWidth / 2, -levelLoader.levelMaxWidth + Game1.designedResolutionWidth, 0);
+                    for (int i = 0; i < levelLoader.enemies.Count; i++)
+                    {
+
+                        Martian martian = (Martian)levelLoader.enemies[i];
+
+                        martian.Update(deltaTime, hero.movement.position);
+                    }
 
                      break;
 
@@ -207,7 +214,11 @@ namespace Super_Stomper_Monogame.Screen
                     // tile 
                     foreach (Tile tile in levelLoader.tiles)
                         tile.Draw(spriteBatch);
-                    
+
+                    // Draw the enemies
+                    foreach (IEnemy enemy in levelLoader.enemies)
+                        enemy.Draw(spriteBatch);
+
 
                     break;
             }

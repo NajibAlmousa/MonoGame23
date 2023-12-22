@@ -6,6 +6,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Xna.Framework.Content;
 using Super_Stomper_Monogame.Modules.BaseClasses;
+using SharpDX.Direct2D1;
 
 namespace Super_Stomper_Monogame.Modules.Game
 {
@@ -13,6 +14,7 @@ namespace Super_Stomper_Monogame.Modules.Game
     {
         public List<Tile> tiles;
         public List<Hitbox> colliders;
+        public List<IEnemy> enemies;
         public MyHero myHero;
         public int levelMaxWidth;
 
@@ -20,6 +22,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         {
             tiles = new List<Tile>();
             colliders = new List<Hitbox>();
+            enemies = new List<IEnemy>();
             myHero = null;
             levelMaxWidth = 0;
 
@@ -60,6 +63,10 @@ namespace Super_Stomper_Monogame.Modules.Game
                                 break;
                             case "Collider":
                                 colliders.Add(new Hitbox(new Rectangle(entity.x, entity.y, (int)entity.width, (int)entity.height), Vector2.Zero));
+                                break;
+
+                            case "Martian":
+                                enemies.Add(new Martian(content, new Vector2(entity.x, entity.y)));
                                 break;
                         }
 

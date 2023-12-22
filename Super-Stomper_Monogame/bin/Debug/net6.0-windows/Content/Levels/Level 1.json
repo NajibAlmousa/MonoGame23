@@ -24,7 +24,7 @@
           "originX": 0,
           "originY": 0
         },
-        
+
         {
           "name": "Collider",
           "id": 2,
@@ -80,7 +80,7 @@
           "originX": 0,
           "originY": 0
         },
-      
+
         {
           "name": "Collider",
           "id": 11,
@@ -91,8 +91,17 @@
           "height": 16,
           "originX": 0,
           "originY": 0
+        },
+        {
+          "name": "Martian",
+          "id": 1,
+          "_eid": "90265134",
+          "x": 160,
+          "y": 192,
+          "originX": 0,
+          "originY": 0
         }
-      
+
       ]
     },
     {
