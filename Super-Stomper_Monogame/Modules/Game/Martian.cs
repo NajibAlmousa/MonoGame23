@@ -31,8 +31,10 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const float vanishTimeAfterStompedOn = 0.6f;
         public Martian(ContentManager content, Vector2 position)
         {
-
-
+            direction = -1;
+            stompedOn = false;
+            shouldBeRemoved = false;
+            deadSince = 0;
 
             movement = new Movement(position);
             physics = new Physics() { dragScale = 0, velocity = direction * speed * Vector2.UnitX };
@@ -45,12 +47,6 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public void Update(float deltaTime, Vector2 myHeroPosition)
         {
-
-            direction = -1;
-            stompedOn = false;
-            shouldBeRemoved = false;
-            deadSince = 0;
-
 
             // Update components
             movement.Update(deltaTime);

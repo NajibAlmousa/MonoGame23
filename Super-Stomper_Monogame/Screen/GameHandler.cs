@@ -174,7 +174,18 @@ namespace Super_Stomper_Monogame.Screen
                                 thisMartian.direction *= -1;
                         }
                     }
+                    //**/*/
+                    hero.physics.velocity = hero.physics.desiredVelocity;
 
+                    // Update martian physics
+                    foreach (IEnemy martian in levelLoader.enemies)
+                    {
+                        if (martian is not Martian)
+                            continue;
+
+                        Martian thisMartian = (Martian)martian;
+                        thisMartian.physics.velocity = thisMartian.physics.desiredVelocity;
+                    }
 
                     // Clamp camera position to not go offscreen
                     cameraPosition.X = Math.Clamp(-hero.movement.position.X + Game1.designedResolutionWidth / 2, -levelLoader.levelMaxWidth + Game1.designedResolutionWidth, 0);
