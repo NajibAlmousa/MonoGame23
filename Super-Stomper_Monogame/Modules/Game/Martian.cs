@@ -24,6 +24,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         private Sprite sprite;
         private Animation animation;
 
+        public const int stompRepulsionForce = 150;
 
         private const int martianWidth = 32;
         private const int martianHeight = 32;

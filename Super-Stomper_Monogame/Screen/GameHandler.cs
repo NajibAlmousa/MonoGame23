@@ -157,6 +157,7 @@ namespace Super_Stomper_Monogame.Screen
 
 
                     MyHero hero = levelLoader.myHero;
+                    //update hero
                     hero.Update(deltaTime);
                     foreach (Hitbox hitbox in levelLoader.colliders)
                     {
@@ -186,17 +187,37 @@ namespace Super_Stomper_Monogame.Screen
                         Martian thisMartian = (Martian)martian;
                         thisMartian.physics.velocity = thisMartian.physics.desiredVelocity;
                     }
-
-                    // Clamp camera position to not go offscreen
-                    cameraPosition.X = Math.Clamp(-hero.movement.position.X + Game1.designedResolutionWidth / 2, -levelLoader.levelMaxWidth + Game1.designedResolutionWidth, 0);
+                    // update martian
                     for (int i = 0; i < levelLoader.enemies.Count; i++)
                     {
 
-                        Martian martian = (Martian)levelLoader.enemies[i];
+                        Martian thisMartian = (Martian)levelLoader.enemies[i];
 
-                        martian.Update(deltaTime, hero.movement.position);
+                        levelLoader.enemies[i].Update(deltaTime, hero.movement.position);
+
+                        // Remove martian after it has been stomped
+                        if (thisMartian.shouldBeRemoved)
+                        {
+                            levelLoader.enemies.RemoveAt(i--);
+                            continue;
+                        }
+
+                        // Stomp on martian 
+                        int collisionType = thisMartian.physics.Collision(hero.movement, hero.hitbox, thisMartian.hitbox, true);
+                        if (!thisMartian.stompedOn && (collisionType == 2 || collisionType == 3) && hero.physics.velocity.Y > 0)
+                        {
+                            thisMartian.stompedOn = true;
+                            thisMartian.physics.desiredVelocity.X = 0;
+                            hero.physics.desiredVelocity.Y = -Martian.stompRepulsionForce;
+                        }
+
+
+
+
+
                     }
-
+                    // Clamp camera position to not go offscreen
+                    cameraPosition.X = Math.Clamp(-hero.movement.position.X + Game1.designedResolutionWidth / 2, -levelLoader.levelMaxWidth + Game1.designedResolutionWidth, 0);
                     break;
 
             }
