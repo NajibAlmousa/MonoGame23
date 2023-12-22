@@ -20,7 +20,7 @@ namespace Super_Stomper_Monogame.Screen
            LevelSelect,
            Playing
         }
-
+        public static Vector2 cameraPosition;
         private int currentLevel;
         private GameState gameState;
         private SpriteFont font;
@@ -56,6 +56,7 @@ namespace Super_Stomper_Monogame.Screen
             currentLevel = 1;
             font = content.Load<SpriteFont>(@"Fonts\Font");
             lastKeyboardState = Keyboard.GetState();
+            cameraPosition = Vector2.Zero;
 
             gameState = GameState.StartMenu;
 
@@ -66,6 +67,14 @@ namespace Super_Stomper_Monogame.Screen
 
         }
         //private GameWindow Window => game.Window;
+
+        public void Reset()
+        {
+            selected = 0;
+            cameraPosition = Vector2.Zero;
+          
+        }
+
 
         public void Update(float deltaTime)
         {
@@ -154,8 +163,10 @@ namespace Super_Stomper_Monogame.Screen
                     }
 
 
+                    // Clamp camera position to not go offscreen
+                    cameraPosition.X = Math.Clamp(-hero.movement.position.X + Game1.designedResolutionWidth / 2, -levelLoader.levelMaxWidth + Game1.designedResolutionWidth, 0);
 
-                    break;
+                     break;
 
             }
             lastKeyboardState = Keyboard.GetState();

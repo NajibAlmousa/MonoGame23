@@ -54,11 +54,12 @@ namespace Super_Stomper_Monogame.Modules.Game
                         switch (entity.name)
                         {
                            
-                            case "Collider":
-                                colliders.Add(new Hitbox(new Rectangle(entity.x, entity.y, (int)entity.width, (int)entity.height), Vector2.Zero));
-                                break;
+                            
                             case "MyHero":
                                 myHero = new MyHero(content, new Vector2(entity.x, entity.y));
+                                break;
+                            case "Collider":
+                                colliders.Add(new Hitbox(new Rectangle(entity.x, entity.y, (int)entity.width, (int)entity.height), Vector2.Zero));
                                 break;
                         }
 

@@ -77,7 +77,7 @@ namespace Super_Stomper_Monogame
             //StartScreen.Draw(_spriteBatch);
             
             //_spriteBatch.End();
-            windowbox.Draw(_spriteBatch, gameHandler.Draw, samplerState: SamplerState.PointClamp);
+            windowbox.Draw(_spriteBatch, gameHandler.Draw, samplerState: SamplerState.PointClamp, transformMatrix: Matrix.CreateTranslation(GameHandler.cameraPosition.X, 0, 0));
 
 
             base.Draw(gameTime);

@@ -52,7 +52,8 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             SamplerState samplerState = null,
             DepthStencilState depthStencilState = null,
             RasterizerState rasterizerState = null,
-            Effect effect = null)
+            Effect effect = null,
+            Matrix? transformMatrix = null)
         {
             Draw(
                 spriteBatch,
@@ -63,10 +64,12 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
                 samplerState,
                 depthStencilState,
                 rasterizerState,
-                effect);
+                effect,
+                transformMatrix);
 
         }
         public Rectangle GetScaledRect() => new Rectangle(Point.Zero, (_renderScaleRectangle.Size.ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(designedResolutionWidth, designedResolutionHeight))).ToPoint());
+        public Point GetCorrectMousePos() => ((Mouse.GetState().Position - _renderScaleRectangle.Location).ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(designedResolutionWidth, designedResolutionHeight))).ToPoint();
 
 
         public void Draw(
@@ -79,7 +82,8 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             SamplerState samplerState = null,
             DepthStencilState depthStencilState = null,
             RasterizerState rasterizerState = null,
-            Effect effect = null)
+            Effect effect = null,
+            Matrix? transformMatrix = null)
         {
             if (!_initilized)
             {
@@ -96,7 +100,9 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
                 blendState, samplerState,
                 depthStencilState,
                 rasterizerState,
-                effect); 
+                effect,
+                transformMatrix);
+
 
             renderAction?.Invoke(spriteBatch);
 

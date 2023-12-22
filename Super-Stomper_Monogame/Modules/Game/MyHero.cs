@@ -37,17 +37,17 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public MyHero(ContentManager content, Vector2 position)
         {
-            canJump = false;
+            canJump = true;
 
-           movement = new Movement(position);
+            movement = new Movement(position);
             hitbox = new Hitbox(new Rectangle(9, 17, myHeroWidth - 9 * 2, myHeroHeight - 17), Vector2.Zero);
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\MyHero"), new Rectangle(0, 0, myHeroWidth, myHeroHeight), Vector2.Zero, position);
 
-           physics = new Physics() { affectedByGravity = true, dragScale = 0.05f, fallingGravityScale = 1.5f };
+            physics = new Physics() { affectedByGravity = true, dragScale = 0.05f, fallingGravityScale = 1.5f };
 
             //frames
             idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
-            runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2,3 }, sprite.sourceRect.Size);
+            runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
             jumpAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 3 }, sprite.sourceRect.Size);
 
 
@@ -94,7 +94,7 @@ namespace Super_Stomper_Monogame.Modules.Game
                 currentAnimation = runAnimation;
 
             }
-            
+
 
 
             /*if (!isMoving)
@@ -116,7 +116,7 @@ namespace Super_Stomper_Monogame.Modules.Game
                 {
                     currentAnimation = jumpAnimation;
                     physics.desiredVelocity.Y -= jumpForce;
-                   // canJump = true;
+                    canJump = true;
                 }
             }
             // Set the animation only if it's changed
@@ -133,15 +133,15 @@ namespace Super_Stomper_Monogame.Modules.Game
             movement.deltaY += physics.desiredVelocity.Y * deltaTime;
 
             //jumping or falling
-            
-           
+
+
             animation.Update(deltaTime);
             prevVelocity = physics.velocity;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+
             sprite.sourceRect = animation.GetCurrentFrame();
             sprite.Draw(spriteBatch, movement.position);
         }

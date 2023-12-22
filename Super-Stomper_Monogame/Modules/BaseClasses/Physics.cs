@@ -19,7 +19,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         public float fallingGravityScale;
         public float risingGravityScale;
 
-        private const float gravityConstant = 1;
+        private const float gravityConstant = 10;
         public Physics()
         {
             velocity = Vector2.Zero;
@@ -35,8 +35,9 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         {
 
             desiredVelocity.X -= desiredVelocity.X * dragScale;
-            desiredVelocity.Y += gravityConstant * (desiredVelocity.Y >= 0 ? fallingGravityScale : risingGravityScale);
             desiredVelocity.X = desiredVelocity.X >= 0 ? (float)System.Math.Floor(desiredVelocity.X) : (float)System.Math.Ceiling(desiredVelocity.X);
+            desiredVelocity.Y += gravityConstant * (desiredVelocity.Y >= 0 ? fallingGravityScale : risingGravityScale);
+
         }
 
 
