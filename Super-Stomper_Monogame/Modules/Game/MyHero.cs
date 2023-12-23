@@ -37,14 +37,17 @@ namespace Super_Stomper_Monogame.Modules.Game
         public int lives;
         private const int heartWidth = 17;
         private const int heartHeight = 17;
-        private const int startingLives = 3;
+        private const int startingLives = 2;
         private Sprite heartSprite;
 
         //IMMUNE
         public bool immune;
         private float immunityTimer;
-        private const int immunityDuration = 3;
-       
+        private const int immunityDuration = 2;
+        //laten flickeren
+        private const int flickerSpeed = 2;
+        private float flickerTimer;
+
 
 
 
@@ -70,7 +73,9 @@ namespace Super_Stomper_Monogame.Modules.Game
             heartSprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\hart"), new Rectangle(0, 0, heartWidth, heartHeight), Vector2.Zero, new Vector2(3, 3));
             lives = startingLives;
             immune = false;
+            immunityTimer = 0;
 
+            flickerTimer = 0;
 
 
             //1
@@ -183,8 +188,17 @@ namespace Super_Stomper_Monogame.Modules.Game
         public void Draw(SpriteBatch spriteBatch)
         {
 
-            sprite.sourceRect = animation.GetCurrentFrame();
-            sprite.Draw(spriteBatch, movement.position);
+            if (flickerTimer == flickerSpeed)
+            {
+                sprite.sourceRect = animation.GetCurrentFrame();
+                sprite.Draw(spriteBatch, movement.position);
+                flickerTimer = 0;
+            }
+
+            if (immunityTimer == 0)
+                flickerTimer = flickerSpeed;
+            else
+                flickerTimer++;
 
             for (int i = 0; i < lives; i++)
                 heartSprite.Draw(spriteBatch, heartSprite.position - GameHandler.cameraPosition + (heartWidth + 3) * Vector2.UnitX * i);
