@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/MyHero/myHero.png</SourceFile>
-  <SourceTime>2023-12-05T12:45:14.7606414+01:00</SourceTime>
-  <DestFile>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/bin/Windows/Spritesheets/MyHero/myHero.xnb</DestFile>
-  <DestTime>2023-12-23T18:53:34.7411569+01:00</DestTime>
+  <SourceFile>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/MyHero/hart.png</SourceFile>
+  <SourceTime>2023-12-23T18:52:49.1183445+01:00</SourceTime>
+  <DestFile>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/bin/Windows/Spritesheets/MyHero/hart.xnb</DestFile>
+  <DestTime>2023-12-23T18:53:34.7301779+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

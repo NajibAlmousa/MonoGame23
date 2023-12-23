@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Super_Stomper_Monogame.Modules.BaseClasses;
+using Super_Stomper_Monogame.Screen;
 using System;
 
 namespace Super_Stomper_Monogame.Modules.Game
@@ -32,6 +33,14 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int jumpForce = 55;
 
 
+        //myhero lives
+        public int lives;
+        private const int heartWidth = 17;
+        private const int heartHeight = 17;
+        private const int startingLives = 3;
+        private Sprite heartSprite;
+
+
 
 
 
@@ -49,6 +58,10 @@ namespace Super_Stomper_Monogame.Modules.Game
             idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
             runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
             jumpAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 3 }, sprite.sourceRect.Size);
+
+            //myhero live
+            heartSprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\hart"), new Rectangle(0, 0, heartWidth, heartHeight), Vector2.Zero, new Vector2(3, 3));
+            lives = startingLives;
 
 
 
@@ -144,6 +157,10 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             sprite.sourceRect = animation.GetCurrentFrame();
             sprite.Draw(spriteBatch, movement.position);
+
+            for (int i = 0; i < lives; i++)
+                heartSprite.Draw(spriteBatch, heartSprite.position - GameHandler.cameraPosition + (heartWidth + 3) * Vector2.UnitX * i);
+
         }
     }
 }
