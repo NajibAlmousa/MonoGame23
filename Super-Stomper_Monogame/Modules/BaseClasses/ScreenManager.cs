@@ -58,31 +58,6 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             game.GraphicsDevice.SetRenderTarget(_renderTarget);
             game.GraphicsDevice.Clear(Color.SkyBlue);
 
-            
-        }
-        public Rectangle GetScaledRect() => new Rectangle(Point.Zero, (_renderScaleRectangle.Size.ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(targetResolutionWidth, targetResolutionHeight))).ToPoint());
-        public Point GetCorrectMousePos() => ((Mouse.GetState().Position - _renderScaleRectangle.Location).ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(targetResolutionWidth, targetResolutionHeight))).ToPoint();
-
-
-        public void Draw(
-            SpriteBatch spriteBatch,
-            Action<SpriteBatch> renderAction,
-            Color clearColor,
-            /* === SpriteBatch.Begin() parameters === */
-            SpriteSortMode sortMode = SpriteSortMode.Deferred,
-            BlendState blendState = null,
-            SamplerState samplerState = null,
-            DepthStencilState depthStencilState = null,
-            RasterizerState rasterizerState = null,
-            Effect effect = null,
-            Matrix? transformMatrix = null)
-        {
-           
-
-            // Draw on the graphics pad.
-            game.GraphicsDevice.SetRenderTarget(_renderTarget);
-            game.GraphicsDevice.Clear(Color.SkyBlue);
-
             spriteBatch.Begin(
                 sortMode,
                 blendState, samplerState,
@@ -96,13 +71,20 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 
             spriteBatch.End();
 
-            // Display the contents of the graphics buffer window-wide.
             game.GraphicsDevice.SetRenderTarget(null);
             game.GraphicsDevice.Clear(ClearOptions.Target, clearColor, 1.0f, 0);
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, samplerState: samplerState);
             spriteBatch.Draw(_renderTarget, _renderScaleRectangle, Color.White);
             spriteBatch.End();
+
+
         }
+        public Rectangle GetScaledRect() => new Rectangle(Point.Zero, (_renderScaleRectangle.Size.ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(targetResolutionWidth, targetResolutionHeight))).ToPoint());
+        //public Point GetCorrectMousePos() => ((Mouse.GetState().Position - _renderScaleRectangle.Location).ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(targetResolutionWidth, targetResolutionHeight))).ToPoint();
+
+
+       
+        
 
         public void SetDesignResolution()
         {
