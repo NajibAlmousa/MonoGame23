@@ -40,6 +40,13 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int startingLives = 3;
         private Sprite heartSprite;
 
+        //IMMUNE
+        public bool immune;
+        private float immunityTimer;
+        private const int immunityDuration = 3;
+       
+
+
 
 
 
@@ -62,6 +69,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             //myhero live
             heartSprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\hart"), new Rectangle(0, 0, heartWidth, heartHeight), Vector2.Zero, new Vector2(3, 3));
             lives = startingLives;
+            immune = false;
 
 
 
@@ -73,9 +81,29 @@ namespace Super_Stomper_Monogame.Modules.Game
 
 
         }
+        public void hurtMyHero()
+        {
+            if (immune)
+                return;
+
+            lives = System.Math.Clamp(lives - 1, 0, lives);
+            immune = true;
+        }
 
         public void Update(float deltaTime)
         {
+            // Immunity frames
+            if (immune)
+                immunityTimer += deltaTime;
+
+
+            // Finished immunity frames
+            if (immunityTimer > immunityDuration)
+            {
+                immune = false;
+                immunityTimer = 0;
+            }
+
             // bool isMoving = false; 
             Console.WriteLine("MyHero Update");
 

@@ -210,7 +210,11 @@ namespace Super_Stomper_Monogame.Screen
                             thisMartian.physics.desiredVelocity.X = 0;
                             hero.physics.desiredVelocity.Y = -Martian.stompRepulsionForce;
                         }
+                        else if ((collisionType == 1 || (collisionType == 0 && hero.hitbox.IsTouching(thisMartian.hitbox))) && !thisMartian.stompedOn)
+                        {
 
+                            hero.hurtMyHero();
+                        }
 
 
 
