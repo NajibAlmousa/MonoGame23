@@ -33,7 +33,7 @@ namespace Super_Stomper_Monogame.Screen
 
 
 
-        private readonly Windowbox windowbox;
+        private readonly ScreenManager screenManager;
         private readonly ContentManager content;
         private readonly Color selectColor;
 
@@ -43,10 +43,10 @@ namespace Super_Stomper_Monogame.Screen
         private const string startText = "Start";
         private const string levelSelectText = "Select Level";
         private const int numberOfLevels = 2;
-        public GameHandler(ContentManager content, Windowbox windowbox)
+        public GameHandler(ContentManager content, ScreenManager screenManager)
         {
 
-            this.windowbox = windowbox;
+            this.screenManager = screenManager ;
             this.game = new Game();
 
             this.content = content;
@@ -229,7 +229,7 @@ namespace Super_Stomper_Monogame.Screen
             //backgroundcolor
             // game.GraphicsDevice.Clear(Color.SkyBlue);
 
-            Point windowSize = windowbox.GetScaledRect().Size;
+            Point windowSize = screenManager.GetScaledRect().Size;
             switch (gameState)
             {
 

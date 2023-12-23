@@ -8,7 +8,7 @@ using System;
 
 namespace Super_Stomper_Monogame.Modules.BaseClasses
 {
-    internal class Windowbox
+    internal class ScreenManager
     {
         //scherm breedte
         private readonly int designedResolutionWidth;
@@ -23,7 +23,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         private Rectangle _renderScaleRectangle;
         private bool _initilized = false;
 
-        public Windowbox(Microsoft.Xna.Framework.Game game, int designedResolutionWidth, int designedResolutionHeight)
+        public ScreenManager(Microsoft.Xna.Framework.Game game, int designedResolutionWidth, int designedResolutionHeight)
         {
             this.game = game;
             this.designedResolutionWidth = designedResolutionWidth;

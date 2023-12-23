@@ -13,7 +13,7 @@ namespace Super_Stomper_Monogame
 
         //screenMenu
        private GameHandler gameHandler;
-        private Windowbox windowbox;
+        private ScreenManager screenManager;
 
      
 
@@ -34,7 +34,7 @@ namespace Super_Stomper_Monogame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            //windowbox = new Windowbox(this, 800, 600); 
+            
 
             base.Initialize();
         }
@@ -48,8 +48,8 @@ namespace Super_Stomper_Monogame
             _graphics.PreferredBackBufferHeight = designedResolutionHeight * 3;
             _graphics.ApplyChanges();
 
-            windowbox = new Windowbox(this, designedResolutionWidth, designedResolutionHeight);
-            gameHandler = new GameHandler(Content, windowbox);
+            screenManager = new ScreenManager(this, designedResolutionWidth, designedResolutionHeight);
+            gameHandler = new GameHandler(Content, screenManager);
 
 
         }
@@ -77,7 +77,7 @@ namespace Super_Stomper_Monogame
             //StartScreen.Draw(_spriteBatch);
             
             //_spriteBatch.End();
-            windowbox.Draw(_spriteBatch, gameHandler.Draw, samplerState: SamplerState.PointClamp, transformMatrix: Matrix.CreateTranslation(GameHandler.cameraPosition.X, 0, 0));
+            screenManager.Draw(_spriteBatch, gameHandler.Draw, samplerState: SamplerState.PointClamp, transformMatrix: Matrix.CreateTranslation(GameHandler.cameraPosition.X, 0, 0));
 
 
             base.Draw(gameTime);
