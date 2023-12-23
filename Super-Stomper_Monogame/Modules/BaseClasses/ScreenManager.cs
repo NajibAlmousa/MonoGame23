@@ -11,42 +11,36 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
     internal class ScreenManager
     {
         //scherm breedte
-        private readonly int designedResolutionWidth;
+        private readonly int targetResolutionWidth;
         // scherm hoogte
-        private readonly int designedResolutionHeight;
+        private readonly int targetResolutionHeight;
         private readonly Microsoft.Xna.Framework.Game game;
         private readonly Color clearColor;
 
 
         private RenderTarget2D _renderTarget;
-
         private Rectangle _renderScaleRectangle;
-        private bool _initilized = false;
+        private bool initilized;
+        
 
-        public ScreenManager(Microsoft.Xna.Framework.Game game, int designedResolutionWidth, int designedResolutionHeight)
+        public ScreenManager(Microsoft.Xna.Framework.Game game, int targetResolutionWidth, int targetResolutionHeight)
         {
             this.game = game;
-            this.designedResolutionWidth = designedResolutionWidth;
-            this.designedResolutionHeight = designedResolutionHeight;
-
+            this.targetResolutionWidth = targetResolutionWidth;
+            this.targetResolutionHeight = targetResolutionHeight;
             clearColor = new Color(0xff181818);
 
             game.Window.ClientSizeChanged += (s, e) => SetDesignResolution();
-
-
-
         }
 
         private GameWindow Window => game.Window;
         private float DesignedResolutionAspectRatio =>
-            designedResolutionWidth / (float)designedResolutionHeight;
+            targetResolutionWidth / (float)targetResolutionHeight;
 
-        public int DesignedResolutionWidth => designedResolutionWidth;
-        public int DesignedResolutionHeight => designedResolutionHeight;
+        public int DesignedResolutionWidth => targetResolutionWidth;
+        public int DesignedResolutionHeight => targetResolutionHeight;
 
-        public void Draw(SpriteBatch spriteBatch,
-            Action<SpriteBatch> renderAction,
-            /* === SpriteBatch.Begin() parameters === */
+        public void Draw(SpriteBatch spriteBatch,Action<SpriteBatch> renderAction,
             SpriteSortMode sortMode = SpriteSortMode.Deferred,
             BlendState blendState = null,
             SamplerState samplerState = null,
@@ -55,21 +49,19 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             Effect effect = null,
             Matrix? transformMatrix = null)
         {
-            Draw(
-                spriteBatch,
-                renderAction,
-                clearColor,
-                sortMode,
-                blendState,
-                samplerState,
-                depthStencilState,
-                rasterizerState,
-                effect,
-                transformMatrix);
+            if (!initilized)
+            {
+                SetDesignResolution();
+                initilized = true;
+            }
 
+            game.GraphicsDevice.SetRenderTarget(_renderTarget);
+            game.GraphicsDevice.Clear(Color.SkyBlue);
+
+            
         }
-        public Rectangle GetScaledRect() => new Rectangle(Point.Zero, (_renderScaleRectangle.Size.ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(designedResolutionWidth, designedResolutionHeight))).ToPoint());
-        public Point GetCorrectMousePos() => ((Mouse.GetState().Position - _renderScaleRectangle.Location).ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(designedResolutionWidth, designedResolutionHeight))).ToPoint();
+        public Rectangle GetScaledRect() => new Rectangle(Point.Zero, (_renderScaleRectangle.Size.ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(targetResolutionWidth, targetResolutionHeight))).ToPoint());
+        public Point GetCorrectMousePos() => ((Mouse.GetState().Position - _renderScaleRectangle.Location).ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(targetResolutionWidth, targetResolutionHeight))).ToPoint();
 
 
         public void Draw(
@@ -85,11 +77,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             Effect effect = null,
             Matrix? transformMatrix = null)
         {
-            if (!_initilized)
-            {
-                SetDesignResolution();
-                _initilized = !_initilized;
-            }
+           
 
             // Draw on the graphics pad.
             game.GraphicsDevice.SetRenderTarget(_renderTarget);
@@ -119,7 +107,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         public void SetDesignResolution()
         {
             _renderTarget = new RenderTarget2D(game.GraphicsDevice,
-                    designedResolutionWidth, designedResolutionHeight,
+                    targetResolutionWidth, targetResolutionHeight,
                     false,
                     SurfaceFormat.Color, DepthFormat.None, 0,
                     RenderTargetUsage.DiscardContents);
