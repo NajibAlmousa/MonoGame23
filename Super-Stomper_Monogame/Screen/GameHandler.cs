@@ -157,11 +157,15 @@ namespace Super_Stomper_Monogame.Screen
 
 
                     MyHero hero = levelLoader.myHero;
-                    //update hero
-                    hero.Update(deltaTime);
+                    
+
                     foreach (Hitbox hitbox in levelLoader.colliders)
                     {
-                        levelLoader.myHero.physics.Collision(hero.movement, hero.hitbox, hitbox);
+                        if (hero.lives != 0)
+                        {
+                            levelLoader.myHero.physics.Collision(hero.movement, hero.hitbox, hitbox);
+                        }
+                            
                         // martian collision 
                         foreach (IEnemy martian in levelLoader.enemies)
                         {
@@ -187,6 +191,9 @@ namespace Super_Stomper_Monogame.Screen
                         Martian thisMartian = (Martian)martian;
                         thisMartian.physics.velocity = thisMartian.physics.desiredVelocity;
                     }
+
+                    //update hero
+                    hero.Update(deltaTime);
                     // update martian
                     for (int i = 0; i < levelLoader.enemies.Count; i++)
                     {
@@ -204,7 +211,7 @@ namespace Super_Stomper_Monogame.Screen
 
                         // Stomp on martian 
                         int collisionType = thisMartian.physics.Collision(hero.movement, hero.hitbox, thisMartian.hitbox, true);
-                        if (!thisMartian.stompedOn && (collisionType == 2 || collisionType == 3) && hero.physics.velocity.Y > 0)
+                        if (!thisMartian.stompedOn && (collisionType == 2 || collisionType == 3) && hero.physics.velocity.Y > 0 && hero.lives > 0)
                         {
                             thisMartian.stompedOn = true;
                             thisMartian.physics.desiredVelocity.X = 0;

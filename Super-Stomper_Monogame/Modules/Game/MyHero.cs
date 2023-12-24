@@ -51,7 +51,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         private const int dieAfter = 2;
         private float deathTimer;
-        private const int deathUpForce = 300;
+        
 
 
 
@@ -121,20 +121,6 @@ namespace Super_Stomper_Monogame.Modules.Game
                 deathTimer += deltaTime;                   
             }
 
-            if (lives == 0)
-            {
-               
-                if (animation != deathAnimation)
-                {
-                    animation = deathAnimation;
-                    physics.desiredVelocity = -Vector2.UnitY * deathUpForce;
-                }
-
-                movement.deltaY += physics.desiredVelocity.Y * deltaTime;
-
-                return;
-            }
-
             // valen = dood
             if (movement.position.Y >= Game1.designedResolutionHeight)
                 lives = 0;
@@ -147,6 +133,20 @@ namespace Super_Stomper_Monogame.Modules.Game
             hitbox.Update(movement.position);
             currentAnimation = idleAnimation;
 
+
+            if (lives == 0)
+            {
+
+                if (animation != deathAnimation)
+                {
+                    animation = deathAnimation;
+                   
+                }
+
+                movement.deltaY += physics.desiredVelocity.Y * deltaTime;
+
+                return;
+            }
             // hero move
             if (Keyboard.GetState().IsKeyDown(Keys.Right) || Keyboard.GetState().IsKeyDown(Keys.D))
             {
