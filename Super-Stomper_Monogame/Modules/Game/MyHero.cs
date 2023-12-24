@@ -134,9 +134,10 @@ namespace Super_Stomper_Monogame.Modules.Game
 
                 return;
             }
-
-            // bool isMoving = false; 
-            Console.WriteLine("MyHero Update");
+            if (movement.position.Y >= Game1.designedResolutionHeight)
+                lives = 0;
+                // bool isMoving = false; 
+                Console.WriteLine("MyHero Update");
 
             movement.Update(deltaTime);
             physics.Update(deltaTime);
