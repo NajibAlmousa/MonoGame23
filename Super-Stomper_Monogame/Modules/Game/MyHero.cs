@@ -23,6 +23,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         private Animation idleAnimation;
         private Animation runAnimation;
         private Animation jumpAnimation;
+        private Animation deathAnimation;
 
         private Vector2 prevVelocity;
 
@@ -48,6 +49,9 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int flickerSpeed = 2;
         private float flickerTimer;
 
+        private const int dieAfter = 2;
+        private float deathTimer;
+        private const int deathUpForce = 300;
 
 
 
@@ -68,6 +72,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
             runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
             jumpAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 3 }, sprite.sourceRect.Size);
+            deathAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 4 }, sprite.sourceRect.Size);
 
             //myhero live
             heartSprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\hart"), new Rectangle(0, 0, heartWidth, heartHeight), Vector2.Zero, new Vector2(3, 3));
@@ -76,6 +81,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             immunityTimer = 0;
 
             flickerTimer = 0;
+            deathTimer = 0;
 
 
             //1
@@ -107,6 +113,26 @@ namespace Super_Stomper_Monogame.Modules.Game
             {
                 immune = false;
                 immunityTimer = 0;
+            }
+
+            // dood
+            if (lives <= 0)
+            {
+                deathTimer += deltaTime;                   
+            }
+
+            if (lives == 0)
+            {
+               
+                if (animation != deathAnimation)
+                {
+                    animation = deathAnimation;
+                    physics.desiredVelocity = -Vector2.UnitY * deathUpForce;
+                }
+
+                movement.deltaY += physics.desiredVelocity.Y * deltaTime;
+
+                return;
             }
 
             // bool isMoving = false; 
