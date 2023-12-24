@@ -31,14 +31,14 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int myHeroHeight = 32;
         private const int speed = 12;
         private const int maxSpeed = 150;
-        private const int jumpForce = 55;
+        private const int jumpForce = 170;
 
 
         //myhero lives
         public int lives;
         private const int heartWidth = 17;
         private const int heartHeight = 17;
-        private const int startingLives = 2;
+        private const int startingLives = 3;
         private Sprite heartSprite;
 
         //IMMUNE
@@ -60,7 +60,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public MyHero(ContentManager content, Vector2 position)
         {
-            canJump = true;
+            canJump = false;
 
             movement = new Movement(position);
             hitbox = new Hitbox(new Rectangle(9, 17, myHeroWidth - 9 * 2, myHeroHeight - 17), Vector2.Zero);
@@ -134,6 +134,8 @@ namespace Super_Stomper_Monogame.Modules.Game
 
                 return;
             }
+
+            // valen = dood
             if (movement.position.Y >= Game1.designedResolutionHeight)
                 lives = 0;
                 // bool isMoving = false; 
@@ -187,7 +189,7 @@ namespace Super_Stomper_Monogame.Modules.Game
                 Console.WriteLine("Jumping");
                 if (canJump)
                 {
-                    currentAnimation = jumpAnimation;
+                    //currentAnimation = jumpAnimation;
                     physics.desiredVelocity.Y -= jumpForce;
                     canJump = true;
                 }
@@ -205,8 +207,23 @@ namespace Super_Stomper_Monogame.Modules.Game
             movement.deltaX += physics.desiredVelocity.X * deltaTime;
             movement.deltaY += physics.desiredVelocity.Y * deltaTime;
 
-            //jumping or falling
 
+            //jumping or falling
+            if(physics.velocity.Y != 0 || prevVelocity.Y != physics.velocity.Y)
+            {
+               currentAnimation = jumpAnimation;
+                canJump = false;
+            }
+            else if (physics.velocity == Vector2.Zero)
+            {
+                currentAnimation = idleAnimation;
+                canJump = true;
+            }
+            else
+            {
+                currentAnimation = runAnimation;
+                canJump = true;
+            }
 
             animation.Update(deltaTime);
             prevVelocity = physics.velocity;
