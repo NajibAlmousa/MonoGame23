@@ -12,6 +12,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 {
     internal class MapLoader
     {
+        public List<Coins> coins;
         public List<Tile> tiles;
         public List<Hitbox> colliders;
         public List<IEnemy> enemies;
@@ -23,6 +24,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             tiles = new List<Tile>();
             colliders = new List<Hitbox>();
             enemies = new List<IEnemy>();
+            coins = new List<Coins>();
             myHero = null;
             levelMaxWidth = 0;
 
@@ -42,7 +44,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             levelMaxWidth = levelData.width;
 
 
-            Texture2D tileset = content.Load<Texture2D>(@"Spritesheets\Environment\OverWorld");
+            Texture2D tileset = content.Load<Texture2D>(@"Spritesheets\Environment\OverWorld1");
 
 
             for (int i = 0; i < levelData.layers.Count; i++)
@@ -56,23 +58,20 @@ namespace Super_Stomper_Monogame.Modules.Game
                         Entity entity = layer.entities[j];
                         switch (entity.name)
                         {
-                           
-                            
+                        
                             case "MyHero":
                                 myHero = new MyHero(content, new Vector2(entity.x, entity.y));
                                 break;
                             case "Collider":
                                 colliders.Add(new Hitbox(new Rectangle(entity.x, entity.y, (int)entity.width, (int)entity.height), Vector2.Zero));
                                 break;
-
                             case "Martian":
                                 enemies.Add(new Martian(content, new Vector2(entity.x, entity.y)));
                                 break;
+                            case "Coin":
+                                coins.Add(new Coins(content, new Vector2(entity.x, entity.y)));
+                                break;
                         }
-
-
-                        
-
 
                     }
                 }

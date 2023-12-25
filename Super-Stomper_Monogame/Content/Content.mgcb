@@ -44,7 +44,7 @@
 /processorParam:TextureFormat=Color
 /build:Spritesheets/Enemies/AllEnemies.png
 
-#begin Spritesheets/Environment/OverWorld.png
+#begin Spritesheets/Environment/OverWorld1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -54,7 +54,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Spritesheets/Environment/OverWorld.png
+/build:Spritesheets/Environment/OverWorld1.png
 
 #begin Spritesheets/MyHero/hart.png
 /importer:TextureImporter

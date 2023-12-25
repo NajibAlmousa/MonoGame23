@@ -274,6 +274,9 @@ namespace Super_Stomper_Monogame.Screen
                     // Draw the enemies
                     foreach (IEnemy enemy in levelLoader.enemies)
                         enemy.Draw(spriteBatch);
+                    // Draw coins
+                    foreach (Coins coin in levelLoader.coins)
+                        coin.Draw(spriteBatch);
 
 
                     break;
