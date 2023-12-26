@@ -108,7 +108,6 @@ namespace Super_Stomper_Monogame.Screen
                         if (selected == 0)
                         {
                             gameState = GameState.Playing;
-
                             levelLoader = new MapLoader(content, currentLevel);
 
 
@@ -144,8 +143,9 @@ namespace Super_Stomper_Monogame.Screen
                     {
                         // Select level
                         //hier later aanpassen
-                        //gameState = GameState.Playing;
+                        gameState = GameState.Playing;
                         currentLevel = selected + 1;
+                        levelLoader = new MapLoader(content, selected + 1);
 
                     }
                     else if (Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -284,10 +284,10 @@ namespace Super_Stomper_Monogame.Screen
                     spriteBatch.DrawString(font, levelSelectText, new Vector2(windowSize.X / 2, windowSize.Y * 0.6f), selected == 1 ? selectColor : Color.White, 0, font.MeasureString(levelSelectText) / 2, 0.5f, SpriteEffects.None, 0);
                     break;
                 case GameState.LevelSelect:
-
+                    windowSize = screenManager.GetScaledRect().Size;
 
                     for (int i = 0; i < numberOfLevels; i++)
-                        spriteBatch.DrawString(font, "Level " + (i + 1).ToString(), new Vector2(220, 350 * (0.4f + 0.1f * i)), selected == i ? selectColor : Color.White, 0, font.MeasureString("Level " + (i + 1).ToString()) / 2, 0.5f, SpriteEffects.None, 0);
+                        spriteBatch.DrawString(font, "Level " + (i + 1).ToString(), new Vector2(windowSize.X / 2, windowSize.Y * (0.2f + 0.1f * i)), selected == i ? selectColor : Color.White, 0, font.MeasureString("Level " + (i + 1).ToString()) / 2, 0.5f, SpriteEffects.None, 0);
 
                     break;
                 case GameState.Playing:
