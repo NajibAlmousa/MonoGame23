@@ -19,7 +19,8 @@ namespace Super_Stomper_Monogame.Screen
         {
             StartMenu,
             LevelSelect,
-            Playing
+            Playing,
+            GameOver
         }
         public static Vector2 cameraPosition;
         private int currentLevel;
@@ -29,8 +30,6 @@ namespace Super_Stomper_Monogame.Screen
         private KeyboardState lastKeyboardState;
 
         private readonly Game game;
-
-
 
 
         private readonly ScreenManager screenManager;
@@ -43,6 +42,7 @@ namespace Super_Stomper_Monogame.Screen
         private const string startText = "Start";
         private const string levelSelectText = "Select Level";
         private const int numberOfLevels = 2;
+        private const string gameOverText = "Game Over!";
         public GameHandler(ContentManager content, ScreenManager screenManager)
         {
 
@@ -157,7 +157,14 @@ namespace Super_Stomper_Monogame.Screen
 
 
                     MyHero hero = levelLoader.myHero;
-                    
+
+                    // Game Over
+                    if (hero.gameOver)
+                    {
+                        Reset();
+                        gameState = GameState.GameOver;
+                        break;
+                    }
 
                     foreach (Hitbox hitbox in levelLoader.colliders)
                     {
@@ -253,11 +260,12 @@ namespace Super_Stomper_Monogame.Screen
             //backgroundcolor
             // game.GraphicsDevice.Clear(Color.SkyBlue);
 
-            Point windowSize = screenManager.GetScaledRect().Size;
+            
             switch (gameState)
             {
 
                 case GameState.StartMenu:
+                    Point windowSize = screenManager.GetScaledRect().Size;
                     // Game name
                     spriteBatch.DrawString(font, gameName, new Vector2(windowSize.X / 2, windowSize.Y * 0.25f), Color.White, 0, font.MeasureString(gameName) / 2, 0.75f, SpriteEffects.None, 0);
 
@@ -290,8 +298,11 @@ namespace Super_Stomper_Monogame.Screen
                     // Draw coins
                     foreach (Coins coin in levelLoader.coins)
                         coin.Draw(spriteBatch);
+                    break;
+                case GameState.GameOver:
+                    windowSize = screenManager.GetScaledRect().Size;
 
-
+                    spriteBatch.DrawString(font, gameOverText, new Vector2(windowSize.X / 2, windowSize.Y * 0.3f), Color.White, 0, font.MeasureString(gameOverText) / 2, 0.5f, SpriteEffects.None, 0);
                     break;
             }
         }

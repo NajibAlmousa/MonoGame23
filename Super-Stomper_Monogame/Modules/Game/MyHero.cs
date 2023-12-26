@@ -18,7 +18,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         public Movement movement;
 
         public bool canJump;
-
+        public bool gameOver;
 
         private Animation idleAnimation;
         private Animation runAnimation;
@@ -61,6 +61,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         public MyHero(ContentManager content, Vector2 position)
         {
             canJump = false;
+            gameOver = false;
 
             movement = new Movement(position);
             hitbox = new Hitbox(new Rectangle(9, 17, myHeroWidth - 9 * 2, myHeroHeight - 17), Vector2.Zero);
@@ -118,7 +119,9 @@ namespace Super_Stomper_Monogame.Modules.Game
             // dood
             if (lives <= 0)
             {
-                deathTimer += deltaTime;                   
+                deathTimer += deltaTime;
+                if (deathTimer >= dieAfter)
+                    gameOver = true;
             }
 
             // valen = dood

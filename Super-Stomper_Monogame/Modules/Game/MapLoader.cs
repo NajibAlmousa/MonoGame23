@@ -18,6 +18,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         public List<IEnemy> enemies;
         public MyHero myHero;
         public int levelMaxWidth;
+      
 
         public MapLoader(ContentManager content, int level)
         {
