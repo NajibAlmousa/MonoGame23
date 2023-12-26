@@ -182,24 +182,24 @@ namespace Super_Stomper_Monogame.Modules.Game
                 
                 animation = runAnimation;
             }*/
-
-            //hero jump
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            {
-                Console.WriteLine("Jumping");
-                if (canJump)
-                {
-                    //currentAnimation = jumpAnimation;
-                    physics.desiredVelocity.Y -= jumpForce;
-                    canJump = true;
-                }
-            }
             // Set the animation only if it's changed
             if (animation != currentAnimation)
             {
                 animation = currentAnimation;
                 animation.Reset();
             }
+            //hero jump
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                Console.WriteLine("Jumping");
+                if (canJump)
+                {
+                    currentAnimation = jumpAnimation;
+                    physics.desiredVelocity.Y -= jumpForce;
+                    canJump = true;
+                }
+            }
+           
 
             physics.desiredVelocity.X = System.Math.Clamp(physics.desiredVelocity.X, -maxSpeed, maxSpeed);
 

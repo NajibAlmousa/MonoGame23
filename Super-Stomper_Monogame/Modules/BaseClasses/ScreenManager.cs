@@ -56,7 +56,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             }
 
             game.GraphicsDevice.SetRenderTarget(_renderTarget);
-            game.GraphicsDevice.Clear(Color.SkyBlue);
+            game.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(
                 sortMode,

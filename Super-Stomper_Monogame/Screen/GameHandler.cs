@@ -229,6 +229,19 @@ namespace Super_Stomper_Monogame.Screen
                     }
                     // Clamp camera position to not go offscreen
                     cameraPosition.X = Math.Clamp(-hero.movement.position.X + Game1.designedResolutionWidth / 2, -levelLoader.levelMaxWidth + Game1.designedResolutionWidth, 0);
+
+
+                    // Collision with coins
+                    for (int i = 0; i < levelLoader.coins.Count; i++)
+                    {
+                        levelLoader.coins[i].Update(deltaTime);
+
+                        if (hero.hitbox.IsTouching(levelLoader.coins[i].hitbox))
+                        {
+                            levelLoader.coins.RemoveAt(i--);
+                            continue;
+                        }
+                    }
                     break;
 
             }
