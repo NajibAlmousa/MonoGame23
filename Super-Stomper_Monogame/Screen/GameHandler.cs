@@ -20,7 +20,8 @@ namespace Super_Stomper_Monogame.Screen
             StartMenu,
             LevelSelect,
             Playing,
-            GameOver
+            GameOver,
+            Won
         }
         public static Vector2 cameraPosition;
         private int currentLevel;
@@ -43,6 +44,7 @@ namespace Super_Stomper_Monogame.Screen
         private const int numberOfLevels = 2;
         private const string gameOverText = "Game Over! :( ";
         private const string backToStartMenu = "Press Escape to Restart";
+        private const string wonText = "Great job! You Won!";
 
 
         public GameHandler(ContentManager content, ScreenManager screenManager)
@@ -196,7 +198,10 @@ namespace Super_Stomper_Monogame.Screen
                     // Won the game
                     if (hero.hitbox.IsTouching(levelLoader.victoryFlag.hitbox))
                     {
+
                         Reset();
+                        gameState = GameState.Won;
+                        break;
                         
                     }
 
@@ -325,6 +330,12 @@ namespace Super_Stomper_Monogame.Screen
 
                     spriteBatch.DrawString(font, gameOverText, new Vector2(windowSize.X / 2, windowSize.Y * 0.3f), Color.White, 0, font.MeasureString(gameOverText) / 2, 0.8f, SpriteEffects.None, 0);
                     spriteBatch.DrawString(font, backToStartMenu, new Vector2(windowSize.X / 2, windowSize.Y * 0.7f), Color.White , 0, font.MeasureString(backToStartMenu) / 2, 0.5f, SpriteEffects.None, 0);
+                    break;
+                case GameState.Won:
+                    windowSize = screenManager.GetScaledRect().Size;
+
+                    spriteBatch.DrawString(font, wonText, new Vector2(windowSize.X / 2, windowSize.Y * 0.3f), Color.White, 0, font.MeasureString(wonText) / 2, 0.5f, SpriteEffects.None, 0);
+
                     break;
             }
         }
