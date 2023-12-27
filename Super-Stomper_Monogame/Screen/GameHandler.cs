@@ -274,6 +274,13 @@ namespace Super_Stomper_Monogame.Screen
                         Reset();
                     }
                     break;
+                case GameState.Won:
+                    if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    {
+                        gameState = GameState.StartMenu;
+                        Reset();
+                    }
+                    break;
             }
             lastKeyboardState = Keyboard.GetState();
         }
@@ -335,6 +342,7 @@ namespace Super_Stomper_Monogame.Screen
                     windowSize = screenManager.GetScaledRect().Size;
 
                     spriteBatch.DrawString(font, wonText, new Vector2(windowSize.X / 2, windowSize.Y * 0.3f), Color.White, 0, font.MeasureString(wonText) / 2, 0.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, backToStartMenu, new Vector2(windowSize.X / 2, windowSize.Y * 0.7f), Color.White, 0, font.MeasureString(backToStartMenu) / 2, 0.5f, SpriteEffects.None, 0);
 
                     break;
             }
