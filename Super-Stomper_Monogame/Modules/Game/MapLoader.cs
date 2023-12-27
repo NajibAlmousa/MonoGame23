@@ -17,6 +17,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         public List<Hitbox> colliders;
         public List<IEnemy> enemies;
         public MyHero myHero;
+        public VictoryFlag victoryFlag;
         public int levelMaxWidth;
       
 
@@ -27,6 +28,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             enemies = new List<IEnemy>();
             coins = new List<Coins>();
             myHero = null;
+            victoryFlag = null;
             levelMaxWidth = 0;
 
             string debugDirectory = Environment.CurrentDirectory;
@@ -71,6 +73,9 @@ namespace Super_Stomper_Monogame.Modules.Game
                                 break;
                             case "Coin":
                                 coins.Add(new Coins(content, new Vector2(entity.x, entity.y)));
+                                break;
+                            case "flag":
+                                victoryFlag = new VictoryFlag(content, new Vector2(entity.x, entity.y));
                                 break;
                         }
 

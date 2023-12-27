@@ -305,6 +305,9 @@ namespace Super_Stomper_Monogame.Screen
                     // Draw coins
                     foreach (Coins coin in levelLoader.coins)
                         coin.Draw(spriteBatch);
+
+                    // Draw the flag
+                    levelLoader.victoryFlag.Draw(spriteBatch);
                     break;
                 case GameState.GameOver:
                     windowSize = screenManager.GetScaledRect().Size;

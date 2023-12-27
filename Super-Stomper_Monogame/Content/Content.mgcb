@@ -44,6 +44,18 @@
 /processorParam:TextureFormat=Color
 /build:Spritesheets/Enemies/AllEnemies.png
 
+#begin Spritesheets/Environment/flag.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Spritesheets/Environment/flag.png
+
 #begin Spritesheets/Environment/OverWorld1.png
 /importer:TextureImporter
 /processor:TextureProcessor

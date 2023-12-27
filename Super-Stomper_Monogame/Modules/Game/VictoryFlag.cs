@@ -11,7 +11,7 @@ namespace Super_Stomper_Monogame.Modules.Game
     {
         private const int flagWidth = 60;
         private const int flagHeight = 60;
-
+        // load victoryfalg tocthe map
         private Sprite sprite;
         private float yOffset;
 
