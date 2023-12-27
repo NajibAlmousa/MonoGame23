@@ -190,6 +190,9 @@ namespace Super_Stomper_Monogame.Screen
                     //**/*/
                     hero.physics.velocity = hero.physics.desiredVelocity;
 
+                    //Update flag animatie
+                    levelLoader.victoryFlag.Update(deltaTime);
+
                     // Update martian physics
                     foreach (IEnemy martian in levelLoader.enemies)
                     {
