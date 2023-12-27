@@ -33,7 +33,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             string debugDirectory = Environment.CurrentDirectory;
             string levelDirectory = debugDirectory + @"\Content\Levels";
-            string jsonFileName = "Level 1.json";
+            string jsonFileName = @"Level " + level.ToString() + ".json";
 
             string jsonFilePath = Path.Combine(levelDirectory, jsonFileName);
 
