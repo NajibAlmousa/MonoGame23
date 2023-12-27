@@ -193,6 +193,13 @@ namespace Super_Stomper_Monogame.Screen
                     //Update flag animatie
                     levelLoader.victoryFlag.Update(deltaTime);
 
+                    // Won the game
+                    if (hero.hitbox.IsTouching(levelLoader.victoryFlag.hitbox))
+                    {
+                        Reset();
+                        
+                    }
+
                     // Update martian physics
                     foreach (IEnemy martian in levelLoader.enemies)
                     {
@@ -222,6 +229,7 @@ namespace Super_Stomper_Monogame.Screen
 
                         // Stomp on martian 
                         int collisionType = thisMartian.physics.Collision(hero.movement, hero.hitbox, thisMartian.hitbox, true);
+
                         if (!thisMartian.stompedOn && (collisionType == 2 || collisionType == 3) && hero.physics.velocity.Y > 0 && hero.lives > 0)
                         {
                             thisMartian.stompedOn = true;

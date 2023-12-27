@@ -14,6 +14,8 @@ namespace Super_Stomper_Monogame.Modules.Game
       
         private Sprite sprite;
         private Animation animation;
+        public Hitbox hitbox;
+
         private float yOffset;
 
         public VictoryFlag(ContentManager content, Vector2 position)
@@ -21,6 +23,8 @@ namespace Super_Stomper_Monogame.Modules.Game
             this.yOffset = 23;
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\Environment\flag"), new Rectangle(0, 0, flagWidth, flagHeight), Vector2.Zero, new Vector2(position.X, position.Y + yOffset));
             animation = new Animation(sprite.texture, 0.25f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
+            hitbox = new Hitbox(new Rectangle((int)position.X + (2 * flagWidth / 6), (int)position.Y + (2 * flagHeight / 3) + (int)yOffset, flagWidth / 3, flagHeight / 2), Vector2.Zero);
+
 
         }
 
