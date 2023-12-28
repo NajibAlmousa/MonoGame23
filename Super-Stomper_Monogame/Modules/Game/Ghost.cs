@@ -23,7 +23,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         private const int ghostWidth = 32;
         private const int ghostHeight = 32;
-        private const int ghostSpeed = 75;
+        private const int ghostSpeed = 85;
         public Ghost(ContentManager content, Vector2 position)
         {
 
