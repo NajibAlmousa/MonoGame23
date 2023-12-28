@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/Environment/flag.png</SourceFile>
-  <SourceTime>2023-12-26T16:28:16.7621379+01:00</SourceTime>
-  <DestFile>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/bin/Windows/Spritesheets/Environment/flag.xnb</DestFile>
-  <DestTime>2023-12-28T18:18:46.1682069+01:00</DestTime>
+  <SourceFile>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/Enemies/Ghost.png</SourceFile>
+  <SourceTime>2023-12-28T17:53:11.0595406+01:00</SourceTime>
+  <DestFile>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/bin/Windows/Spritesheets/Enemies/Ghost.xnb</DestFile>
+  <DestTime>2023-12-28T18:18:46.1631838+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
