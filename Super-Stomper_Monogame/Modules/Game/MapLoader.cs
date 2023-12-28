@@ -77,6 +77,9 @@ namespace Super_Stomper_Monogame.Modules.Game
                             case "flag":
                                 victoryFlag = new VictoryFlag(content, new Vector2(entity.x, entity.y));
                                 break;
+                            case "Ghost":
+                                enemies.Add(new Ghost(content, new Vector2(entity.x, entity.y)));
+                                break;
                         }
 
                     }

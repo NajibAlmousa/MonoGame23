@@ -98,12 +98,21 @@
         },
         {
           "name": "Collider",
-          "id":8 ,
+          "id": 8,
           "_eid": "90341885",
           "x": 176,
           "y": 144,
           "width": 160,
           "height": 16,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Ghost",
+          "id": 38,
+          "_eid": "420606032",
+          "x": 400,
+          "y": 5,
           "originX": 0,
           "originY": 0
         }

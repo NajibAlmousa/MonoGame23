@@ -247,10 +247,21 @@ namespace Super_Stomper_Monogame.Screen
                             hero.hurtMyHero();
                         }
 
+                    }
 
+                    foreach (IEnemy ghost in levelLoader.enemies)
+                    {
+                        if (ghost is not Ghost)
+                            continue;
+
+                        ghost.Update(deltaTime, hero.movement.position);
 
 
                     }
+
+
+
+
                     // Clamp camera position to not go offscreen
                     cameraPosition.X = Math.Clamp(-hero.movement.position.X + Game1.designedResolutionWidth / 2, -levelLoader.levelMaxWidth + Game1.designedResolutionWidth, 0);
 
