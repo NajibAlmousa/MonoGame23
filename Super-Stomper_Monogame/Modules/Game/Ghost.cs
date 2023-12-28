@@ -23,6 +23,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         private const int ghostWidth = 32;
         private const int ghostHeight = 32;
+        private const int ghostSpeed = 75;
         public Ghost(ContentManager content, Vector2 position)
         {
 
@@ -38,6 +39,8 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public void Update(float deltaTime, Vector2 myHeroPosition)
         {
+
+            physics.velocity.X = -System.Math.Sign(movement.position.X - myHeroPosition.X) * ghostSpeed;
             physics.Update(deltaTime);
             movement.deltaX += physics.velocity.X * deltaTime;
 
