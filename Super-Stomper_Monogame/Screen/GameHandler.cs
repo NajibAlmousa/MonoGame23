@@ -220,6 +220,8 @@ namespace Super_Stomper_Monogame.Screen
                     // update martian
                     for (int i = 0; i < levelLoader.enemies.Count; i++)
                     {
+                        if (levelLoader.enemies[i] is not Martian)
+                            continue;
 
                         Martian thisMartian = (Martian)levelLoader.enemies[i];
 
