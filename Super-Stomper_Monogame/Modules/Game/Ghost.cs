@@ -32,7 +32,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             physics = new Physics();
 
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets/Enemies/Ghost"), new Rectangle(0, 0, ghostWidth, ghostHeight), Vector2.Zero);
-            animation = new Animation(sprite.texture, 0.5f, true, new int[] { 0, 1, 2, 3, 5 }, sprite.sourceRect.Size);
+            animation = new Animation(sprite.texture, 0.5f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
 
         }
 

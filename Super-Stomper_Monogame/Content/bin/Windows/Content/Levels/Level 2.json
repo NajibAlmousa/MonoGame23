@@ -61,7 +61,7 @@
           "originX": 0,
           "originY": 0
         },
-       
+
         {
           "name": "Collider",
           "id": 7,
@@ -149,7 +149,99 @@
           "height": 256,
           "originX": 0,
           "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 14,
+          "_eid": "42085177",
+          "x": 432,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 15,
+          "_eid": "42085177",
+          "x": 448,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 16,
+          "_eid": "42085177",
+          "x": 464,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 17,
+          "_eid": "42085177",
+          "x": 480,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 18,
+          "_eid": "42085177",
+          "x": 496,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 19,
+          "_eid": "42085177",
+          "x": 510,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 20,
+          "_eid": "42085177",
+          "x": 416,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 21,
+          "_eid": "42085177",
+          "x": 400,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Martian",
+          "id": 22,
+          "_eid": "42060603",
+          "x": 840,
+          "y": 84,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Martian",
+          "id": 23,
+          "_eid": "42060603",
+          "x": 860,
+          "y": 84,
+          "originX": 0,
+          "originY": 0
         }
+
+
 
 
 
