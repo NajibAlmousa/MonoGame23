@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Super_Stomper_Monogame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0cf46827ef9f17f45ef3dfca4751a727aacbe849")]
 [assembly: System.Reflection.AssemblyProductAttribute("Super_Stomper_Monogame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Super_Stomper_Monogame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

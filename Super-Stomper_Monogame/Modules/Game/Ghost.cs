@@ -14,6 +14,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 {
     internal class Ghost : IEnemy
     {
+        public GhostFireBall fireBall;
         private ContentManager content;
         private Sprite sprite;
         private Animation animation;
@@ -30,6 +31,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             this.content = content;
             movement = new Movement(position);
             physics = new Physics();
+            this.fireBall = null;
 
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets/Enemies/Ghost"), new Rectangle(0, 0, ghostWidth, ghostHeight), Vector2.Zero);
             animation = new Animation(sprite.texture, 0.5f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
@@ -40,6 +42,11 @@ namespace Super_Stomper_Monogame.Modules.Game
         public void Update(float deltaTime, Vector2 myHeroPosition)
         {
 
+            //fire ball
+
+            fireBall = new GhostFireBall(content, movement.position);
+
+            fireBall.Update(deltaTime);
             physics.velocity.X = -System.Math.Sign(movement.position.X - myHeroPosition.X) * ghostSpeed;
             physics.Update(deltaTime);
             movement.deltaX += physics.velocity.X * deltaTime;
@@ -51,6 +58,9 @@ namespace Super_Stomper_Monogame.Modules.Game
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, movement.position);
+
+            // fire ball
+           fireBall.Draw(spriteBatch);
         }
     }
 }

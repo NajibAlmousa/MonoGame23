@@ -47,3 +47,4 @@ C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Su
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Environment\flag.xnb
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Levels\Level 2.json
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\Ghost.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\ghost-FireBall.xnb
