@@ -7,6 +7,7 @@
     <File>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Fonts/Font.spritefont</File>
     <File>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/Coins/coin.png</File>
     <File>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/Enemies/AllEnemies.png</File>
+    <File>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/Enemies/ghost-FireBall.png</File>
     <File>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/Enemies/Ghost.png</File>
     <File>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/Environment/flag.png</File>
     <File>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/Environment/OverWorld1.png</File>
@@ -14,6 +15,7 @@
     <File>C:/Users/32465/OneDrive - AP Hogeschool Antwerpen/Bureaublad/SuperStompergame/Super-Stomper_Monogame/Super-Stomper_Monogame/Content/Spritesheets/MyHero/myHero.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
