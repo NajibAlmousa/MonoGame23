@@ -22,14 +22,16 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int fireHeight = 32;
         public Fire(ContentManager content, Vector2 position)
         {
-            sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\Enemies\Fire_2"), new Rectangle(7 * fireWidth, 0, fireWidth, fireHeight), Vector2.Zero, position);
-            animation = new Animation(sprite.texture, 0.25f, true, new int[] { 0,1,2,3,4 }, sprite.sourceRect.Size);
+            sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\Enemies\AllEnemies"), new Rectangle(7 * fireWidth, 0, fireWidth, fireHeight), Vector2.Zero, position);
+            animation = new Animation(sprite.texture, 0.25f, true, new int[] { 6, 7, 8, 9, 10, 11, 12, 13 }, sprite.sourceRect.Size);
             movement = new Movement(position);
         }
 
 
         public void Update(float deltaTime, Vector2 myHeroPosition)
         {
+            movement.Update(deltaTime);
+            animation.Update(deltaTime);
 
         }
 

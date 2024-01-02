@@ -150,78 +150,7 @@
           "originX": 0,
           "originY": 0
         },
-        {
-          "name": "Coin",
-          "id": 14,
-          "_eid": "42085177",
-          "x": 432,
-          "y": 160,
-          "originX": 0,
-          "originY": 0
-        },
-        {
-          "name": "Coin",
-          "id": 15,
-          "_eid": "42085177",
-          "x": 448,
-          "y": 160,
-          "originX": 0,
-          "originY": 0
-        },
-        {
-          "name": "Coin",
-          "id": 16,
-          "_eid": "42085177",
-          "x": 464,
-          "y": 160,
-          "originX": 0,
-          "originY": 0
-        },
-        {
-          "name": "Coin",
-          "id": 17,
-          "_eid": "42085177",
-          "x": 480,
-          "y": 160,
-          "originX": 0,
-          "originY": 0
-        },
-        {
-          "name": "Coin",
-          "id": 18,
-          "_eid": "42085177",
-          "x": 496,
-          "y": 160,
-          "originX": 0,
-          "originY": 0
-        },
-        {
-          "name": "Coin",
-          "id": 19,
-          "_eid": "42085177",
-          "x": 510,
-          "y": 160,
-          "originX": 0,
-          "originY": 0
-        },
-        {
-          "name": "Coin",
-          "id": 20,
-          "_eid": "42085177",
-          "x": 416,
-          "y": 160,
-          "originX": 0,
-          "originY": 0
-        },
-        {
-          "name": "Coin",
-          "id": 21,
-          "_eid": "42085177",
-          "x": 400,
-          "y": 160,
-          "originX": 0,
-          "originY": 0
-        },
+
         {
           "name": "Martian",
           "id": 22,
@@ -239,8 +168,70 @@
           "y": 84,
           "originX": 0,
           "originY": 0
+        },
+        {
+          "name": "Fire",
+          "id": 24,
+          "_eid": "42086961",
+          "x": 395,
+          "y": 143,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 14,
+          "_eid": "42085177",
+          "x": 422,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 14,
+          "_eid": "42085177",
+          "x": 436,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Fire",
+          "id": 24,
+          "_eid": "42086961",
+          "x": 445,
+          "y": 143,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 14,
+          "_eid": "42085177",
+          "x": 472,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Coin",
+          "id": 14,
+          "_eid": "42085177",
+          "x": 484,
+          "y": 160,
+          "originX": 0,
+          "originY": 0
+        },
+        {
+          "name": "Fire",
+          "id": 24,
+          "_eid": "42086961",
+          "x": 495,
+          "y": 143,
+          "originX": 0,
+          "originY": 0
         }
-
 
 
 

@@ -80,6 +80,9 @@ namespace Super_Stomper_Monogame.Modules.Game
                             case "Ghost":
                                 enemies.Add(new Ghost(content, new Vector2(entity.x, entity.y)));
                                 break;
+                            case "Fire":
+                                enemies.Add(new Fire(content, new Vector2(entity.x, entity.y)));
+                                break;
                         }
 
                     }

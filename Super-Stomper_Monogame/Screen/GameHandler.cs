@@ -264,6 +264,15 @@ namespace Super_Stomper_Monogame.Screen
                             hero.hurtMyHero();
 
                     }
+                    foreach (IEnemy fire in levelLoader.enemies)
+                    {
+                        if (fire is not Fire)
+                            continue;
+
+                        fire.Update(deltaTime, hero.movement.position);
+
+                       
+                    }
 
 
 
