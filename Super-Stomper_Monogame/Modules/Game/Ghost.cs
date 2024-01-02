@@ -25,6 +25,10 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int ghostWidth = 32;
         private const int ghostHeight = 32;
         private const int ghostSpeed = 85;
+
+
+        private float timer;
+        private const float throwBallEvery = 3;
         public Ghost(ContentManager content, Vector2 position)
         {
 
@@ -44,9 +48,22 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             //fire ball
 
-            fireBall = new GhostFireBall(content, movement.position);
+            if (timer <= 0)
+            {
+                timer = throwBallEvery;
+                animation.Reset(true);
+            }
 
-            fireBall.Update(deltaTime);
+            if (timer == throwBallEvery)
+            {
+                fireBall = new GhostFireBall(content, movement.position);
+                animation.Reset();
+            }
+            fireBall?.Update(deltaTime);
+            timer -= deltaTime;
+
+
+
             physics.velocity.X = -System.Math.Sign(movement.position.X - myHeroPosition.X) * ghostSpeed;
             physics.Update(deltaTime);
             movement.deltaX += physics.velocity.X * deltaTime;
@@ -57,10 +74,16 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public void Draw(SpriteBatch spriteBatch)
         {
+
+            if (!animation.finished)
+                sprite.sourceRect.X = animation.GetCurrentFrame().X;
+            else
+                sprite.sourceRect.X = 16 * ghostWidth;
+
             sprite.Draw(spriteBatch, movement.position);
 
             // fire ball
-           fireBall.Draw(spriteBatch);
+            fireBall?.Draw(spriteBatch);
         }
     }
 }
