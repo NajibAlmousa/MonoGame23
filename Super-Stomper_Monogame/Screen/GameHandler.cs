@@ -12,8 +12,9 @@ namespace Super_Stomper_Monogame.Screen
 {
     internal class GameHandler
     {
-        private MyHero myHero;
+       
         private MapLoader levelLoader;
+        private MyHero hero;
 
         private enum GameState
         {
@@ -30,6 +31,7 @@ namespace Super_Stomper_Monogame.Screen
         private int selected;
         private KeyboardState lastKeyboardState;
         private readonly Game game;
+        
 
 
         private readonly ScreenManager screenManager;
@@ -65,7 +67,7 @@ namespace Super_Stomper_Monogame.Screen
 
             gameState = GameState.StartMenu;
 
-            myHero = new MyHero(content, new Vector2(20, 40));
+            
 
 
 
@@ -158,8 +160,8 @@ namespace Super_Stomper_Monogame.Screen
                     break;
                 case GameState.Playing:
 
+                   hero = levelLoader.myHero;
 
-                    MyHero hero = levelLoader.myHero;
 
                     // Game Over
                     if (hero.gameOver)
@@ -338,9 +340,9 @@ namespace Super_Stomper_Monogame.Screen
                     break;
                 case GameState.Playing:
 
-                    // myuhero
+                    // myhero
                     levelLoader.myHero.Draw(spriteBatch);
-
+                  
                     // tile 
                     foreach (Tile tile in levelLoader.tiles)
                         tile.Draw(spriteBatch);

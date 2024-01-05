@@ -16,10 +16,12 @@ namespace Super_Stomper_Monogame.Modules.Game
         public List<Tile> tiles;
         public List<Hitbox> colliders;
         public List<IEnemy> enemies;
-        public MyHero myHero;
         public VictoryFlag victoryFlag;
         public int levelMaxWidth;
-      
+        public HeroFactory heroFactory;
+        public MyHero myHero { get;  set; }
+
+
 
         public MapLoader(ContentManager content, int level)
         {
@@ -27,7 +29,8 @@ namespace Super_Stomper_Monogame.Modules.Game
             colliders = new List<Hitbox>();
             enemies = new List<IEnemy>();
             coins = new List<Coins>();
-            myHero = null;
+            this.heroFactory= new HeroFactory();
+            this.myHero = null;
             victoryFlag = null;
             levelMaxWidth = 0;
 
@@ -63,7 +66,8 @@ namespace Super_Stomper_Monogame.Modules.Game
                         {
                         
                             case "MyHero":
-                                myHero = new MyHero(content, new Vector2(entity.x, entity.y));
+                                        //new MyHero(content, new Vector2(entity.x, entity.y));
+                             myHero = heroFactory.createHero(content, new Vector2(entity.x, entity.y));
                                 break;
                             case "Collider":
                                 colliders.Add(new Hitbox(new Rectangle(entity.x, entity.y, (int)entity.width, (int)entity.height), Vector2.Zero));
