@@ -4,11 +4,10 @@ using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System;
 
 namespace Super_Stomper_Monogame.Modules.BaseClasses
 {
-    internal class ScreenManager
+    public class ScreenManager
     {
         //scherm breedte
         private readonly int targetResolutionWidth;

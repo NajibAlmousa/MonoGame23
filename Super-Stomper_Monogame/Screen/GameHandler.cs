@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SharpDX.Direct2D1;
 using Super_Stomper_Monogame.Modules.BaseClasses;
 using Super_Stomper_Monogame.Modules.Game;
 using System;
@@ -10,29 +9,19 @@ using System;
 
 namespace Super_Stomper_Monogame.Screen
 {
-    internal class GameHandler
+    internal partial class GameHandler
     {
-       
+
         private MapLoader levelLoader;
         private MyHero hero;
-
-        private enum GameState
-        {
-            StartMenu,
-            LevelSelect,
-            Playing,
-            GameOver,
-            Won
-        }
         public static Vector2 cameraPosition;
         private int currentLevel;
         private GameState gameState;
         private SpriteFont font;
         private int selected;
         private KeyboardState lastKeyboardState;
-       
-        
 
+        private ICommand startCommand;
 
         private readonly ScreenManager screenManager;
         private readonly ContentManager content;
@@ -65,15 +54,22 @@ namespace Super_Stomper_Monogame.Screen
             lastKeyboardState = Keyboard.GetState();
             cameraPosition = Vector2.Zero;
 
+            startCommand = new StartCommand(this);
+
+
             gameState = GameState.StartMenu;
 
-            
-
-
-
+      
         }
-        //private GameWindow Window => game.Window;
+        public void StartGame()
+        {
+            gameState = GameState.Playing;
+            levelLoader = new MapLoader(content, currentLevel);
+         
+        }
 
+
+      
         public void Reset()
         {
             selected = 0;
@@ -111,8 +107,10 @@ namespace Super_Stomper_Monogame.Screen
                         // Start Game
                         if (selected == 0)
                         {
-                            gameState = GameState.Playing;
-                            levelLoader = new MapLoader(content, currentLevel);
+                            //gameState = GameState.Playing;
+                           // levelLoader = new MapLoader(content, currentLevel);
+                            startCommand.Execute();
+                          
 
 
                         }
@@ -146,10 +144,12 @@ namespace Super_Stomper_Monogame.Screen
                     if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !lastKeyboardState.IsKeyDown(Keys.Enter))
                     {
                         // Select level
-                        //hier later aanpassen
-                        gameState = GameState.Playing;
+                        //gameState = GameState.Playing;
+                        // levelLoader = new MapLoader(content, selected + 1);
                         currentLevel = selected + 1;
-                        levelLoader = new MapLoader(content, selected + 1);
+                        startCommand.Execute();
+                       
+                    
 
                     }
                     else if (Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -158,6 +158,7 @@ namespace Super_Stomper_Monogame.Screen
                         gameState = GameState.StartMenu;
                     }
                     break;
+
                 case GameState.Playing:
 
                    hero = levelLoader.myHero;
@@ -278,13 +279,8 @@ namespace Super_Stomper_Monogame.Screen
 
 
                     }
-
-
-
-
                     // Clamp camera position to not go offscreen
                     cameraPosition.X = Math.Clamp(-hero.movement.position.X + Game1.designedResolutionWidth / 2, -levelLoader.levelMaxWidth + Game1.designedResolutionWidth, 0);
-
 
                     // Collision with coins
                     for (int i = 0; i < levelLoader.coins.Count; i++)

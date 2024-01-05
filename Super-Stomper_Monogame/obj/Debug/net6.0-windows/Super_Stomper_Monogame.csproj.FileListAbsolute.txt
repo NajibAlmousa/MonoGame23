@@ -1,4 +1,21 @@
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.csproj.AssemblyReference.cache
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.AssemblyInfoInputs.cache
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.AssemblyInfo.cs
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.csproj.CoreCompileInputs.cache
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.sourcelink.json
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Fonts\Font.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Levels\Level 1.json
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Levels\Level 2.json
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Coins\coin.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\AllEnemies.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\fireBall.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\ghost-FireBall.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\Ghost.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Environment\flag.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Environment\OverWorld1.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\MyHero\hart.xnb
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\MyHero\myHero.xnb
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Super_Stomper_Monogame.exe
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Super_Stomper_Monogame.deps.json
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Super_Stomper_Monogame.runtimeconfig.json
@@ -8,6 +25,7 @@ C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Su
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\MonoGame.Framework.dll
+C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\SharpDX.dll
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\SharpDX.Direct2D1.dll
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\SharpDX.Direct3D11.dll
@@ -25,27 +43,9 @@ C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Su
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\runtimes\win7-arm\native\libuv.dll
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\runtimes\win7-x64\native\libuv.dll
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\runtimes\win7-x86\native\libuv.dll
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.csproj.AssemblyReference.cache
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.AssemblyInfoInputs.cache
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.AssemblyInfo.cs
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.csproj.CoreCompileInputs.cache
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.sourcelink.json
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.csproj.CopyComplete
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.dll
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\refint\Super_Stomper_Monogame.dll
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.pdb
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\Super_Stomper_Monogame.genruntimeconfig.cache
 C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\obj\Debug\net6.0-windows\ref\Super_Stomper_Monogame.dll
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\MyHero\myHero.xnb
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Levels\Level 1.json
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\AllEnemies.xnb
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\MyHero\hart.xnb
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Coins\coin.xnb
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Environment\OverWorld1.xnb
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Environment\flag.xnb
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Levels\Level 2.json
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\Ghost.xnb
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\ghost-FireBall.xnb
-C:\Users\32465\OneDrive - AP Hogeschool Antwerpen\Bureaublad\SuperStompergame\Super-Stomper_Monogame\Super-Stomper_Monogame\bin\Debug\net6.0-windows\Content\Spritesheets\Enemies\fireBall.xnb
