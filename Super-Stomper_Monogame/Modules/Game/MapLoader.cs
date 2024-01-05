@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Microsoft.Xna.Framework.Content;
 using Super_Stomper_Monogame.Modules.BaseClasses;
 using SharpDX.Direct2D1;
+using static Super_Stomper_Monogame.Modules.Game.MapLoader;
 
 namespace Super_Stomper_Monogame.Modules.Game
 {
@@ -18,7 +19,11 @@ namespace Super_Stomper_Monogame.Modules.Game
         public List<IEnemy> enemies;
         public VictoryFlag victoryFlag;
         public int levelMaxWidth;
+
         public HeroFactory heroFactory;
+        public EnemyFactory enemyFactory;
+        public Vector2 position;
+
         public MyHero myHero { get;  set; }
 
 
@@ -29,7 +34,10 @@ namespace Super_Stomper_Monogame.Modules.Game
             colliders = new List<Hitbox>();
             enemies = new List<IEnemy>();
             coins = new List<Coins>();
-            this.heroFactory= new HeroFactory();
+            this.heroFactory = new HeroFactory();
+            this.enemyFactory = new EnemyFactory();
+            
+
             this.myHero = null;
             victoryFlag = null;
             levelMaxWidth = 0;
@@ -62,30 +70,37 @@ namespace Super_Stomper_Monogame.Modules.Game
                     for (int j = 0; j < layer.entities.Count; j++)
                     {
                         Entity entity = layer.entities[j];
+                        position = new Vector2(entity.x, entity.y);
                         switch (entity.name)
                         {
                         
                             case "MyHero":
-                                        //new MyHero(content, new Vector2(entity.x, entity.y));
-                             myHero = heroFactory.createHero(content, new Vector2(entity.x, entity.y));
+                                     //new MyHero(content, new Vector2(entity.x, entity.y));
+                             myHero = heroFactory.createHero(content, position);
                                 break;
                             case "Collider":
                                 colliders.Add(new Hitbox(new Rectangle(entity.x, entity.y, (int)entity.width, (int)entity.height), Vector2.Zero));
                                 break;
                             case "Martian":
-                                enemies.Add(new Martian(content, new Vector2(entity.x, entity.y)));
+                                // enemies.Add(new Martian(content, new Vector2(entity.x, entity.y)));
+                                enemies.Add(enemyFactory.CreateEnemy(content, position, EnemyType.Martian));
+
                                 break;
                             case "Coin":
-                                coins.Add(new Coins(content, new Vector2(entity.x, entity.y)));
+                                coins.Add(new Coins(content, position));
                                 break;
                             case "flag":
-                                victoryFlag = new VictoryFlag(content, new Vector2(entity.x, entity.y));
+                                victoryFlag = new VictoryFlag(content, position);
                                 break;
                             case "Ghost":
-                                enemies.Add(new Ghost(content, new Vector2(entity.x, entity.y)));
+                                //enemies.Add(new Ghost(content, new Vector2(entity.x, entity.y)));
+                                enemies.Add(enemyFactory.CreateEnemy(content, position, EnemyType.Ghost));
+
                                 break;
                             case "Fire":
-                                enemies.Add(new Fire(content, new Vector2(entity.x, entity.y)));
+                                //enemies.Add(new Fire(content, new Vector2(entity.x, entity.y)));
+                                enemies.Add(enemyFactory.CreateEnemy(content, position, EnemyType.Fire));
+
                                 break;
                         }
 

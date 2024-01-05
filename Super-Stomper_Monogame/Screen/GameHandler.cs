@@ -30,7 +30,7 @@ namespace Super_Stomper_Monogame.Screen
         private SpriteFont font;
         private int selected;
         private KeyboardState lastKeyboardState;
-        private readonly Game game;
+       
         
 
 
@@ -53,7 +53,7 @@ namespace Super_Stomper_Monogame.Screen
         {
 
             this.screenManager = screenManager ;
-            this.game = new Game();
+           
 
             this.content = content;
             selectColor = Color.Green;
