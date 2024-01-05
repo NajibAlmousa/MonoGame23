@@ -110,9 +110,9 @@ namespace Super_Stomper_Monogame.Screen
                             //gameState = GameState.Playing;
                            // levelLoader = new MapLoader(content, currentLevel);
                             startCommand.Execute();
-                          
+                            
 
-
+                                    
                         }
                         // Select Level
                         else if (selected == 1)

@@ -20,8 +20,6 @@ namespace Super_Stomper_Monogame.Modules.Game
         public VictoryFlag victoryFlag;
         public int levelMaxWidth;
 
-        public HeroFactory heroFactory;
-        public EnemyFactory enemyFactory;
         public Vector2 position;
 
         public MyHero myHero { get;  set; }
@@ -34,8 +32,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             colliders = new List<Hitbox>();
             enemies = new List<IEnemy>();
             coins = new List<Coins>();
-            this.heroFactory = new HeroFactory();
-            this.enemyFactory = new EnemyFactory();
+        
             
 
             this.myHero = null;
@@ -76,14 +73,14 @@ namespace Super_Stomper_Monogame.Modules.Game
                         
                             case "MyHero":
                                      //new MyHero(content, new Vector2(entity.x, entity.y));
-                             myHero = heroFactory.createHero(content, position);
+                             myHero = HeroFactory.createHero(content, position);
                                 break;
                             case "Collider":
                                 colliders.Add(new Hitbox(new Rectangle(entity.x, entity.y, (int)entity.width, (int)entity.height), Vector2.Zero));
                                 break;
                             case "Martian":
                                 // enemies.Add(new Martian(content, new Vector2(entity.x, entity.y)));
-                                enemies.Add(enemyFactory.CreateEnemy(content, position, EnemyType.Martian));
+                                enemies.Add(EnemyFactory.CreateEnemy(content, position, EnemyType.Martian));
 
                                 break;
                             case "Coin":
@@ -94,12 +91,12 @@ namespace Super_Stomper_Monogame.Modules.Game
                                 break;
                             case "Ghost":
                                 //enemies.Add(new Ghost(content, new Vector2(entity.x, entity.y)));
-                                enemies.Add(enemyFactory.CreateEnemy(content, position, EnemyType.Ghost));
+                                enemies.Add(EnemyFactory.CreateEnemy(content, position, EnemyType.Ghost));
 
                                 break;
                             case "Fire":
                                 //enemies.Add(new Fire(content, new Vector2(entity.x, entity.y)));
-                                enemies.Add(enemyFactory.CreateEnemy(content, position, EnemyType.Fire));
+                                enemies.Add(EnemyFactory.CreateEnemy(content, position, EnemyType.Fire));
 
                                 break;
                         }

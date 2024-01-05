@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Super_Stomper_Monogame.Modules.BaseClasses
 {
-    internal enum EnemyType
+    public enum EnemyType
     {
         Martian,
         Ghost,
