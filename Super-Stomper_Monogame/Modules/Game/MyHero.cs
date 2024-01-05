@@ -14,11 +14,13 @@ namespace Super_Stomper_Monogame.Modules.Game
         private Animation animation;
         private Animation currentAnimation;
         private Sprite sprite;
+        private Sprite heartSprite;
         public Physics physics;
         public Movement movement;
 
         public bool canJump;
         public bool gameOver;
+        public bool immune;
 
         private Animation idleAnimation;
         private Animation runAnimation;
@@ -29,25 +31,24 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         private const int myHeroWidth = 32;
         private const int myHeroHeight = 32;
-        private const int speed = 12;
-        private const int maxSpeed = 150;
+        private const int speed = 11;
+        private const int maxSpeed = 135;
         private const int jumpForce = 155;
-
-        public int lives;
         private const int heartWidth = 17;
         private const int heartHeight = 17;
         private const int startingLives = 3;
-        private Sprite heartSprite;
 
-        public bool immune;
-        private float immunityTimer;
-        private const int immunityDuration = 2;
-
+        public int lives;
+   
         private const int flickerSpeed = 2;
-        private float flickerTimer;
-
+        private const int immunityDuration = 2;
         private const int dieAfter = 2;
+
+        private float immunityTimer;
+        private float flickerTimer;
         private float deathTimer;
+     
+       
         
         public MyHero(ContentManager content, Vector2 position)
         {
@@ -112,16 +113,12 @@ namespace Super_Stomper_Monogame.Modules.Game
             physics.Update(deltaTime);
 
             hitbox.Update(movement.position);
-            currentAnimation = idleAnimation;
-
 
             if (lives == 0)
             {
-
                 if (animation != deathAnimation)
                 {
                     animation = deathAnimation;
-                   
                 }
 
                 movement.deltaY += physics.desiredVelocity.Y * deltaTime;
@@ -135,32 +132,22 @@ namespace Super_Stomper_Monogame.Modules.Game
                 physics.desiredVelocity.X += speed;
 
                 sprite.spriteEffects = SpriteEffects.None;
-                currentAnimation = runAnimation;
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Left) || Keyboard.GetState().IsKeyDown(Keys.Q))
             {
-                Console.WriteLine("Moving left");
-
                 physics.desiredVelocity.X -= speed;
 
                 sprite.spriteEffects = SpriteEffects.FlipHorizontally;
 
-                currentAnimation = runAnimation;
-
             }
 
-            if (animation != currentAnimation)
-            {
-                animation = currentAnimation;
-                animation.Reset();
-            }
             //hero jump
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                Console.WriteLine("Jumping");
+                
                 if (canJump)
                 {
-                    currentAnimation = jumpAnimation;
+                   
                     physics.desiredVelocity.Y -= jumpForce;
                     canJump = true;
                 }
@@ -176,17 +163,17 @@ namespace Super_Stomper_Monogame.Modules.Game
             //jumping or falling
             if(physics.velocity.Y != 0 || prevVelocity.Y != physics.velocity.Y)
             {
-               currentAnimation = jumpAnimation;
+               animation = jumpAnimation;
                 canJump = false;
             }
             else if (physics.velocity == Vector2.Zero)
             {
-                currentAnimation = idleAnimation;
+                animation = idleAnimation;
                 canJump = true;
             }
             else
             {
-                currentAnimation = runAnimation;
+                animation = runAnimation;
                 canJump = true;
             }
 
