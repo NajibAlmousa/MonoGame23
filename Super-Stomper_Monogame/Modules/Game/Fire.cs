@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Super_Stomper_Monogame.Modules.Game
 {
@@ -17,6 +18,8 @@ namespace Super_Stomper_Monogame.Modules.Game
         private Sprite sprite;
         private Animation animation;
         private Movement movement;
+        public Hitbox hitbox;
+
 
         private const int fireWidth = 32;
         private const int fireHeight = 32;
@@ -24,6 +27,8 @@ namespace Super_Stomper_Monogame.Modules.Game
         {
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\Enemies\AllEnemies"), new Rectangle(7 * fireWidth, 0, fireWidth, fireHeight), Vector2.Zero, position);
             animation = new Animation(sprite.texture, 0.25f, true, new int[] { 6, 7, 8, 9, 10, 11, 12, 13 }, sprite.sourceRect.Size);
+            hitbox = new Hitbox(new Rectangle(8, 9, fireWidth - 8 * 2, fireHeight - 9), Vector2.Zero);
+
             movement = new Movement(position);
         }
 
@@ -32,6 +37,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         {
             movement.Update(deltaTime);
             animation.Update(deltaTime);
+            hitbox.Update(movement.position);
 
         }
 

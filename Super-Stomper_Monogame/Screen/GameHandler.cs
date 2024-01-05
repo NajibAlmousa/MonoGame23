@@ -271,7 +271,10 @@ namespace Super_Stomper_Monogame.Screen
 
                         fire.Update(deltaTime, hero.movement.position);
 
-                       
+                        if (hero.hitbox.IsTouching(((Fire)fire).hitbox))
+                            hero.hurtMyHero();
+
+
                     }
 
 
