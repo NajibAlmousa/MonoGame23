@@ -1,9 +1,7 @@
 ﻿ using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+
 
 namespace Super_Stomper_Monogame.Modules.BaseClasses
 {
@@ -79,7 +77,6 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 
         }
         public Rectangle GetScaledRect() => new Rectangle(Point.Zero, (_renderScaleRectangle.Size.ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(targetResolutionWidth, targetResolutionHeight))).ToPoint());
-        //public Point GetCorrectMousePos() => ((Mouse.GetState().Position - _renderScaleRectangle.Location).ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(targetResolutionWidth, targetResolutionHeight))).ToPoint();
 
 
        

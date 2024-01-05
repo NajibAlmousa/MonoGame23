@@ -1,10 +1,5 @@
-﻿using Super_Stomper_Monogame.Modules.Game;
-using Super_Stomper_Monogame.Screen;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Super_Stomper_Monogame.Screen;
+
 
 namespace Super_Stomper_Monogame.Modules.BaseClasses
 {

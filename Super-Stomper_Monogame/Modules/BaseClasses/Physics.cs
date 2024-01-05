@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 
 
@@ -14,6 +9,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         // springen
         public Vector2 velocity;
         public Vector2 desiredVelocity;
+
         public float dragScale;
         public bool affectedByGravity;
         public float fallingGravityScale;
@@ -28,18 +24,14 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             fallingGravityScale = 1;
             risingGravityScale = 1; 
             dragScale = 1;
-
         }
 
         public void Update(float deltaTime)
         {
-
             desiredVelocity.X -= desiredVelocity.X * dragScale;
             desiredVelocity.X = desiredVelocity.X >= 0 ? (float)System.Math.Floor(desiredVelocity.X) : (float)System.Math.Ceiling(desiredVelocity.X);
             desiredVelocity.Y += gravityConstant * (desiredVelocity.Y >= 0 ? fallingGravityScale : risingGravityScale);
-
         }
-
 
         public int Collision(Movement movement, Hitbox myHitbox, Hitbox otherHitbox, bool justDetection = false)
         {
@@ -107,15 +99,9 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             myHitbox.Update(movement.position);
             return collisionType;
         }
-
-            
-        
         private BoundingBox GetTopBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Top, 0), new Vector3(rect.Right, rect.Top, 0));
         private BoundingBox GetBottomBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Bottom, 0), new Vector3(rect.Right, rect.Bottom, 0));
         private BoundingBox GetLeftBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Left, rect.Top, 0), new Vector3(rect.Left, rect.Bottom, 0));
         private BoundingBox GetRightBoundingBox(Rectangle rect) => new BoundingBox(new Vector3(rect.Right, rect.Top, 0), new Vector3(rect.Right, rect.Bottom, 0));
-
-
     }
-
 }

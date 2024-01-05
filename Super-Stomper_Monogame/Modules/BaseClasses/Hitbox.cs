@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Super_Stomper_Monogame.Modules.BaseClasses
 {
@@ -11,7 +7,6 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
     {
         public Rectangle rectangle;
         public Vector2 origin;
-
         private Rectangle originalRect;
         public Hitbox(Rectangle bounds, Vector2 origin)
         {
@@ -22,13 +17,9 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 
         public void Update(Vector2 position)
         {
-
             //hier moet ik updaten wanneer de hero move moet de hitbox meebewgen
             rectangle = new Rectangle((position + (originalRect.Location.ToVector2() - origin)).ToPoint(), originalRect.Size.ToVector2().ToPoint());
-
         }
-
-
 
         public bool IsTouching(Hitbox hitbox)
         {

@@ -6,8 +6,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Xna.Framework.Content;
 using Super_Stomper_Monogame.Modules.BaseClasses;
-using SharpDX.Direct2D1;
-using static Super_Stomper_Monogame.Modules.Game.MapLoader;
+
 
 namespace Super_Stomper_Monogame.Modules.Game
 {

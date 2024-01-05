@@ -7,12 +7,13 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
     {
         public bool looping;
         public bool finished { private set; get; }
-        public int currentFrame { private set; get; }
         public bool started { private set; get; }
+        public int currentFrame { private set; get; }
+        private int[] frames;
 
         private Texture2D texture;
-        private int[] frames;
         private Point frameSize;
+
         private float timeBetweenFrames;
         private float timer;
 
