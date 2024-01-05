@@ -25,15 +25,12 @@ namespace Super_Stomper_Monogame.Modules.Game
             movement = new Movement(position);
         }
 
-
         public void Update(float deltaTime, Vector2 myHeroPosition)
         {
             movement.Update(deltaTime);
             animation.Update(deltaTime);
             hitbox.Update(movement.position);
-
         }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.sourceRect = animation.GetCurrentFrame();

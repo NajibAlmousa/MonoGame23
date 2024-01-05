@@ -32,7 +32,6 @@ namespace Super_Stomper_Monogame.Modules.Game
             enemies = new List<IEnemy>();
             coins = new List<Coins>();
         
-            
 
             this.myHero = null;
             victoryFlag = null;
@@ -43,9 +42,6 @@ namespace Super_Stomper_Monogame.Modules.Game
             string jsonFileName = @"Level " + level.ToString() + ".json";
 
             string jsonFilePath = Path.Combine(levelDirectory, jsonFileName);
-
-
-
 
             string jsonText = File.ReadAllText(jsonFilePath);
             Console.WriteLine(jsonText);

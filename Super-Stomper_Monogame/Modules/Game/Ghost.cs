@@ -1,14 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-
 using Super_Stomper_Monogame.Modules.BaseClasses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Super_Stomper_Monogame.Modules.Game
 {
@@ -21,33 +14,28 @@ namespace Super_Stomper_Monogame.Modules.Game
         private Physics physics;
         private Movement movement;
 
-
         private const int ghostWidth = 32;
         private const int ghostHeight = 32;
         private const int ghostSpeed = 120;
 
-
         private float timer;
+
         private const float throwBallEvery = 3;
         public Ghost(ContentManager content, Vector2 position)
         {
-
             this.content = content;
             movement = new Movement(position);
             physics = new Physics();
+
             this.fireBall = null;
 
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets/Enemies/Ghost"), new Rectangle(0, 0, ghostWidth, ghostHeight), Vector2.Zero);
             animation = new Animation(sprite.texture, 0.5f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
-
         }
 
 
         public void Update(float deltaTime, Vector2 myHeroPosition)
         {
-
-            //fire ball
-
             if (timer <= 0)
             {
                 timer = throwBallEvery;
@@ -61,8 +49,6 @@ namespace Super_Stomper_Monogame.Modules.Game
             }
             fireBall?.Update(deltaTime);
             timer -= deltaTime;
-
-
 
             physics.velocity.X = -System.Math.Sign(movement.position.X - myHeroPosition.X) * ghostSpeed;
             physics.Update(deltaTime);
@@ -82,7 +68,6 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             sprite.Draw(spriteBatch, movement.position);
 
-            // fire ball
             fireBall?.Draw(spriteBatch);
         }
     }

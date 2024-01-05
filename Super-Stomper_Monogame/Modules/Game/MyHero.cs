@@ -33,31 +33,22 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int maxSpeed = 150;
         private const int jumpForce = 155;
 
-
-        //myhero lives
         public int lives;
         private const int heartWidth = 17;
         private const int heartHeight = 17;
         private const int startingLives = 3;
         private Sprite heartSprite;
 
-        //IMMUNE
         public bool immune;
         private float immunityTimer;
         private const int immunityDuration = 2;
-        //laten flickeren
+
         private const int flickerSpeed = 2;
         private float flickerTimer;
 
         private const int dieAfter = 2;
         private float deathTimer;
         
-
-
-
-
-
-
         public MyHero(ContentManager content, Vector2 position)
         {
             canJump = false;
@@ -69,13 +60,11 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             physics = new Physics() { affectedByGravity = true, dragScale = 0.05f, fallingGravityScale = 1.5f };
 
-            //frames
             idleAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 0 }, sprite.sourceRect.Size);
             runAnimation = new Animation(sprite.texture, 0.1f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
             jumpAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 3 }, sprite.sourceRect.Size);
             deathAnimation = new Animation(sprite.texture, 0.1f, false, new int[] { 4 }, sprite.sourceRect.Size);
 
-            //myhero live
             heartSprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\MyHero\hart"), new Rectangle(0, 0, heartWidth, heartHeight), Vector2.Zero, new Vector2(3, 3));
             lives = startingLives;
             immune = false;
@@ -84,13 +73,8 @@ namespace Super_Stomper_Monogame.Modules.Game
             flickerTimer = 0;
             deathTimer = 0;
 
-
-            //1
             animation = idleAnimation;
             prevVelocity = physics.velocity;
-
-
-
 
         }
         public void hurtMyHero()
@@ -104,19 +88,15 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public void Update(float deltaTime)
         {
-            // Immunity frames
             if (immune)
                 immunityTimer += deltaTime;
 
-
-            // Finished immunity frames
             if (immunityTimer > immunityDuration)
             {
                 immune = false;
                 immunityTimer = 0;
             }
 
-            // dood
             if (lives <= 0)
             {
                 deathTimer += deltaTime;
@@ -127,9 +107,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             // valen = dood
             if (movement.position.Y >= Game1.designedResolutionHeight)
                 lives = 0;
-                // bool isMoving = false; 
-                Console.WriteLine("MyHero Update");
-
+           
             movement.Update(deltaTime);
             physics.Update(deltaTime);
 
@@ -157,7 +135,6 @@ namespace Super_Stomper_Monogame.Modules.Game
                 physics.desiredVelocity.X += speed;
 
                 sprite.spriteEffects = SpriteEffects.None;
-                // isMoving = true; 
                 currentAnimation = runAnimation;
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Left) || Keyboard.GetState().IsKeyDown(Keys.Q))
@@ -168,24 +145,10 @@ namespace Super_Stomper_Monogame.Modules.Game
 
                 sprite.spriteEffects = SpriteEffects.FlipHorizontally;
 
-                //isMoving = true;
                 currentAnimation = runAnimation;
 
             }
 
-
-
-            /*if (!isMoving)
-            {
-                animation = idleAnimation;
-                animation.Reset(); 
-            }
-            else
-            {
-                
-                animation = runAnimation;
-            }*/
-            // Set the animation only if it's changed
             if (animation != currentAnimation)
             {
                 animation = currentAnimation;
@@ -202,8 +165,7 @@ namespace Super_Stomper_Monogame.Modules.Game
                     canJump = true;
                 }
             }
-           
-
+    
             physics.desiredVelocity.X = System.Math.Clamp(physics.desiredVelocity.X, -maxSpeed, maxSpeed);
 
             // effect of velocity on position 
@@ -249,7 +211,6 @@ namespace Super_Stomper_Monogame.Modules.Game
 
             for (int i = 0; i < lives; i++)
                 heartSprite.Draw(spriteBatch, heartSprite.position - GameHandler.cameraPosition + (heartWidth + 3) * Vector2.UnitX * i);
-
         }
     }
 }

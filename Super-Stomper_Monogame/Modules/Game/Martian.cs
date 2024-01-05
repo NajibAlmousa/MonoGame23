@@ -2,27 +2,26 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Super_Stomper_Monogame.Modules.BaseClasses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace Super_Stomper_Monogame.Modules.Game
 {
     internal class Martian : IEnemy
     {
-        public int direction;
+       
         public Hitbox hitbox;
         public Physics physics;
         public Movement movement;
-        public bool stompedOn;
-        public bool shouldBeRemoved;
-        private float deadSince;
         private Sprite sprite;
         private Animation animation;
+
+        public int direction;
+
+        public bool stompedOn;
+        public bool shouldBeRemoved;
+
+        private float deadSince;
+
 
         public const int stompRepulsionForce = 150;
 
@@ -48,14 +47,10 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public void Update(float deltaTime, Vector2 myHeroPosition)
         {
-
-            // Update components
             movement.Update(deltaTime);
             physics.Update(deltaTime);
             animation.Update(deltaTime);
             hitbox.Update(movement.position);
-
-
 
             if (!stompedOn)
                 physics.desiredVelocity.X = speed * direction;
@@ -65,7 +60,6 @@ namespace Super_Stomper_Monogame.Modules.Game
             if (deadSince > vanishTimeAfterStompedOn)
                 shouldBeRemoved = true;
 
-            // effect of velocity on position
             movement.deltaX += physics.desiredVelocity.X * deltaTime;
             movement.deltaY += physics.desiredVelocity.Y * deltaTime;
         }
