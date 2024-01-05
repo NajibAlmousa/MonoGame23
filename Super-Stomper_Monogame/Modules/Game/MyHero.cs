@@ -31,7 +31,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int myHeroHeight = 32;
         private const int speed = 12;
         private const int maxSpeed = 150;
-        private const int jumpForce = 170;
+        private const int jumpForce = 155;
 
 
         //myhero lives

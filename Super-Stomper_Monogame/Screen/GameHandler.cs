@@ -296,20 +296,14 @@ namespace Super_Stomper_Monogame.Screen
                         }
                     }
                     break;
-                case GameState.GameOver:
+                default: // GameOver/Won
                     if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                     {
                         gameState = GameState.StartMenu;
                         Reset();
                     }
                     break;
-                case GameState.Won:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                    {
-                        gameState = GameState.StartMenu;
-                        Reset();
-                    }
-                    break;
+               
             }
             lastKeyboardState = Keyboard.GetState();
         }
