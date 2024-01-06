@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Input;
 using Super_Stomper_Monogame.Modules.BaseClasses.Animations;
 using Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers;
 using Super_Stomper_Monogame.Modules.BaseClasses.Sprites;
-using Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers;
 using System;
 
 namespace Super_Stomper_Monogame.Modules.Game.MyHero
@@ -14,15 +13,10 @@ namespace Super_Stomper_Monogame.Modules.Game.MyHero
     {
         public Hitbox hitbox;
         private Animation animation;
-        private Animation currentAnimation;
         private Sprite sprite;
         private Sprite heartSprite;
         public Physics physics;
         public Movement movement;
-
-        public bool canJump;
-        public bool gameOver;
-        public bool immune;
 
         private Animation idleAnimation;
         private Animation runAnimation;
@@ -30,6 +24,10 @@ namespace Super_Stomper_Monogame.Modules.Game.MyHero
         private Animation deathAnimation;
 
         private Vector2 prevVelocity;
+
+        public bool canJump;
+        public bool gameOver;
+        public bool immune;
 
         private const int myHeroWidth = 32;
         private const int myHeroHeight = 32;
