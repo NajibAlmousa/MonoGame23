@@ -21,13 +21,13 @@ namespace Super_Stomper_Monogame.Screen
         private int selected;
         private KeyboardState lastKeyboardState;
 
-        private ICommand startCommand;
+        //private ICommand startCommand;
 
         private readonly ScreenManager screenManager;
         private readonly ContentManager content;
         private readonly Color selectColor;
 
-
+        private ICommand currentCommand;
 
         private const string gameName = "Super Stomper";
         private const string startText = "Start";
@@ -54,7 +54,8 @@ namespace Super_Stomper_Monogame.Screen
             lastKeyboardState = Keyboard.GetState();
             cameraPosition = Vector2.Zero;
 
-            startCommand = new StartCommand(this);
+           
+            SetCommand(new StartCommand(this));
 
 
             gameState = GameState.StartMenu;
@@ -67,9 +68,12 @@ namespace Super_Stomper_Monogame.Screen
             levelLoader = new MapLoader(content, currentLevel);
          
         }
+        public void SetCommand(ICommand command)
+        {
+            currentCommand = command;
+        }
 
 
-      
         public void Reset()
         {
             selected = 0;
@@ -109,7 +113,7 @@ namespace Super_Stomper_Monogame.Screen
                         {
                             //gameState = GameState.Playing;
                            // levelLoader = new MapLoader(content, currentLevel);
-                            startCommand.Execute();
+                            currentCommand.Execute();
                             
 
                                     
@@ -147,9 +151,9 @@ namespace Super_Stomper_Monogame.Screen
                         //gameState = GameState.Playing;
                         // levelLoader = new MapLoader(content, selected + 1);
                         currentLevel = selected + 1;
-                        startCommand.Execute();
-                       
-                    
+                        currentCommand.Execute();
+
+
 
                     }
                     else if (Keyboard.GetState().IsKeyDown(Keys.Escape))

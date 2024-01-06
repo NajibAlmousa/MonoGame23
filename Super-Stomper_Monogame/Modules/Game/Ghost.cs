@@ -16,7 +16,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         private const int ghostWidth = 32;
         private const int ghostHeight = 32;
-        private const int ghostSpeed = 120;
+        private const int ghostSpeed = 96;
 
         private float timer;
 
@@ -30,7 +30,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             this.fireBall = null;
 
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets/Enemies/Ghost"), new Rectangle(0, 0, ghostWidth, ghostHeight), Vector2.Zero);
-            animation = new Animation(sprite.texture, 0.5f, true, new int[] { 0, 1, 2, 3 }, sprite.sourceRect.Size);
+            animation = new Animation(sprite.texture, 0.4f, true, new int[] { 0, 1,2,3 }, sprite.sourceRect.Size);
         }
 
 
