@@ -2,12 +2,20 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Super_Stomper_Monogame.Modules.BaseClasses;
+using Super_Stomper_Monogame.Modules.BaseClasses.Command;
+using Super_Stomper_Monogame.Modules.BaseClasses.Enums;
+using Super_Stomper_Monogame.Modules.BaseClasses.Interfaces;
+using Super_Stomper_Monogame.Modules.BaseClasses.Screen;
 using Super_Stomper_Monogame.Modules.Game;
+using Super_Stomper_Monogame.Modules.Game.Enemies;
+using Super_Stomper_Monogame.Modules.Game.GameElements;
+using Super_Stomper_Monogame.Modules.Game.MyHero;
 using System;
 
+using System.Collections.Generic;
 
-namespace Super_Stomper_Monogame.Screen
+
+namespace Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers
 {
     internal partial class GameHandler
     {
@@ -21,7 +29,6 @@ namespace Super_Stomper_Monogame.Screen
         private int selected;
         private KeyboardState lastKeyboardState;
 
-        //private ICommand startCommand;
 
         private readonly ScreenManager screenManager;
         private readonly ContentManager content;
@@ -41,8 +48,8 @@ namespace Super_Stomper_Monogame.Screen
         public GameHandler(ContentManager content, ScreenManager screenManager)
         {
 
-            this.screenManager = screenManager ;
-           
+            this.screenManager = screenManager;
+
 
             this.content = content;
             selectColor = Color.Green;
@@ -54,19 +61,20 @@ namespace Super_Stomper_Monogame.Screen
             lastKeyboardState = Keyboard.GetState();
             cameraPosition = Vector2.Zero;
 
-           
+
             SetCommand(new StartCommand(this));
 
 
             gameState = GameState.StartMenu;
 
-      
+
         }
+
         public void StartGame()
         {
             gameState = GameState.Playing;
             levelLoader = new MapLoader(content, currentLevel);
-         
+
         }
         public void SetCommand(ICommand command)
         {
@@ -95,7 +103,7 @@ namespace Super_Stomper_Monogame.Screen
                         selected++;
                         selected %= 2;
 
-                        selected -= (selected / 2) * 2;
+                        selected -= selected / 2 * 2;
                     }
                     else if (Keyboard.GetState().IsKeyDown(Keys.Up) && !lastKeyboardState.IsKeyDown(Keys.Up)) // Go Down
                     {
@@ -103,7 +111,7 @@ namespace Super_Stomper_Monogame.Screen
                         selected %= 2;
                         selected = Math.Abs(selected);
 
-                        selected += (selected / 2) * 2;
+                        selected += selected / 2 * 2;
                     }
                     // Choose choice
                     if (Keyboard.GetState().IsKeyDown(Keys.Enter))
@@ -112,11 +120,11 @@ namespace Super_Stomper_Monogame.Screen
                         if (selected == 0)
                         {
                             //gameState = GameState.Playing;
-                           // levelLoader = new MapLoader(content, currentLevel);
+                            // levelLoader = new MapLoader(content, currentLevel);
                             currentCommand.Execute();
-                            
 
-                                    
+
+
                         }
                         // Select Level
                         else if (selected == 1)
@@ -134,7 +142,7 @@ namespace Super_Stomper_Monogame.Screen
                         selected++;
                         selected %= numberOfLevels;
 
-                        selected -= (selected / numberOfLevels) * numberOfLevels;
+                        selected -= selected / numberOfLevels * numberOfLevels;
                     }
                     else if (Keyboard.GetState().IsKeyDown(Keys.Up) && !lastKeyboardState.IsKeyDown(Keys.Up))
                     {
@@ -142,7 +150,7 @@ namespace Super_Stomper_Monogame.Screen
                         selected %= numberOfLevels;
                         selected = Math.Abs(selected);
 
-                        selected += (selected / numberOfLevels) * numberOfLevels;
+                        selected += selected / numberOfLevels * numberOfLevels;
                     }
 
                     if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !lastKeyboardState.IsKeyDown(Keys.Enter))
@@ -165,7 +173,7 @@ namespace Super_Stomper_Monogame.Screen
 
                 case GameState.Playing:
 
-                   hero = levelLoader.myHero;
+                    hero = levelLoader.myHero;
 
 
                     // Game Over
@@ -182,7 +190,7 @@ namespace Super_Stomper_Monogame.Screen
                         {
                             levelLoader.myHero.physics.Collision(hero.movement, hero.hitbox, hitbox);
                         }
-                            
+
                         // martian collision 
                         foreach (IEnemy martian in levelLoader.enemies)
                         {
@@ -209,7 +217,7 @@ namespace Super_Stomper_Monogame.Screen
                         Reset();
                         gameState = GameState.Won;
                         break;
-                        
+
                     }
 
                     // Update martian physics
@@ -250,7 +258,7 @@ namespace Super_Stomper_Monogame.Screen
                             thisMartian.physics.desiredVelocity.X = 0;
                             hero.physics.desiredVelocity.Y = -Martian.stompRepulsionForce;
                         }
-                        else if ((collisionType == 1 || (collisionType == 0 && hero.hitbox.IsTouching(thisMartian.hitbox))) && !thisMartian.stompedOn)
+                        else if ((collisionType == 1 || collisionType == 0 && hero.hitbox.IsTouching(thisMartian.hitbox)) && !thisMartian.stompedOn)
                         {
 
                             hero.hurtMyHero();
@@ -305,17 +313,17 @@ namespace Super_Stomper_Monogame.Screen
                         Reset();
                     }
                     break;
-               
+
             }
             lastKeyboardState = Keyboard.GetState();
         }
 
-        public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             //backgroundcolor
             // game.GraphicsDevice.Clear(Color.SkyBlue);
 
-            
+
             switch (gameState)
             {
 
@@ -342,7 +350,7 @@ namespace Super_Stomper_Monogame.Screen
 
                     // myhero
                     levelLoader.myHero.Draw(spriteBatch);
-                  
+
                     // tile 
                     foreach (Tile tile in levelLoader.tiles)
                         tile.Draw(spriteBatch);
@@ -361,7 +369,7 @@ namespace Super_Stomper_Monogame.Screen
                     windowSize = screenManager.GetScaledRect().Size;
 
                     spriteBatch.DrawString(font, gameOverText, new Vector2(windowSize.X / 2, windowSize.Y * 0.3f), Color.White, 0, font.MeasureString(gameOverText) / 2, 0.8f, SpriteEffects.None, 0);
-                    spriteBatch.DrawString(font, backToStartMenu, new Vector2(windowSize.X / 2, windowSize.Y * 0.7f), Color.White , 0, font.MeasureString(backToStartMenu) / 2, 0.5f, SpriteEffects.None, 0);
+                    spriteBatch.DrawString(font, backToStartMenu, new Vector2(windowSize.X / 2, windowSize.Y * 0.7f), Color.White, 0, font.MeasureString(backToStartMenu) / 2, 0.5f, SpriteEffects.None, 0);
                     break;
                 case GameState.Won:
                     windowSize = screenManager.GetScaledRect().Size;

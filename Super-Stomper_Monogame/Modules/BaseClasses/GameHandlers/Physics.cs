@@ -2,7 +2,7 @@
 
 
 
-namespace Super_Stomper_Monogame.Modules.BaseClasses
+namespace Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers
 {
     internal class Physics
     {
@@ -22,7 +22,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             desiredVelocity = Vector2.Zero;
             affectedByGravity = true;
             fallingGravityScale = 1;
-            risingGravityScale = 1; 
+            risingGravityScale = 1;
             dragScale = 1;
         }
 
@@ -74,7 +74,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
                     {
                         movement.deltaX = movement.deltaX > 0 ? otherHitbox.rectangle.Left - myHitbox.rectangle.Right : otherHitbox.rectangle.Right - myHitbox.rectangle.Left;
 
-                        movement.position = new Vector2((int)(movement.position.X), movement.position.Y);
+                        movement.position = new Vector2((int)movement.position.X, movement.position.Y);
                         desiredVelocity.X = 0;
                     }
                 }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Super_Stomper_Monogame.Modules.Game;
+using Super_Stomper_Monogame.Modules.Game.MyHero;
 
 
-namespace Super_Stomper_Monogame.Modules.BaseClasses
+namespace Super_Stomper_Monogame.Modules.BaseClasses.Factories
 {
     internal class HeroFactory
     {

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Content;
-using Super_Stomper_Monogame.Modules.BaseClasses;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Super_Stomper_Monogame.Modules.BaseClasses.Animations;
+using Super_Stomper_Monogame.Modules.BaseClasses.Sprites;
+using Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers;
 namespace Super_Stomper_Monogame.Modules.Game
 {
     internal class GhostFireBall

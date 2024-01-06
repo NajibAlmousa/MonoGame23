@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Super_Stomper_Monogame.Modules.BaseClasses
+namespace Super_Stomper_Monogame.Modules.BaseClasses.Animations
 {
     internal class Animation
     {
@@ -63,7 +63,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
             timer = 0;
         }
 
-        public Rectangle GetCurrentFrame() => new Rectangle((frames[currentFrame] * frameSize.X) % texture.Width, ((frames[currentFrame] * frameSize.X) / texture.Width) * frameSize.Y, frameSize.X, frameSize.Y);
+        public Rectangle GetCurrentFrame() => new Rectangle(frames[currentFrame] * frameSize.X % texture.Width, frames[currentFrame] * frameSize.X / texture.Width * frameSize.Y, frameSize.X, frameSize.Y);
 
 
     }

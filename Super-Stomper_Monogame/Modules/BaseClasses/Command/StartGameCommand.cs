@@ -1,7 +1,10 @@
-﻿using Super_Stomper_Monogame.Screen;
+﻿using Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers;
+using Super_Stomper_Monogame.Modules.BaseClasses.Interfaces;
 
 
-namespace Super_Stomper_Monogame.Modules.BaseClasses
+
+
+namespace Super_Stomper_Monogame.Modules.BaseClasses.Command
 {
     internal class StartCommand : ICommand
     {

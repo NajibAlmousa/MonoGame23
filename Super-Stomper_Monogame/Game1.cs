@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Super_Stomper_Monogame.Modules.BaseClasses;
-using Super_Stomper_Monogame.Screen;
-    
+using Super_Stomper_Monogame.Modules.BaseClasses.Screen;
+using Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers;
+
 
 namespace Super_Stomper_Monogame
 {

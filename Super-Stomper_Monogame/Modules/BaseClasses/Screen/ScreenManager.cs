@@ -1,9 +1,9 @@
-﻿ using System;
+﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
 
-namespace Super_Stomper_Monogame.Modules.BaseClasses
+namespace Super_Stomper_Monogame.Modules.BaseClasses.Screen
 {
     public class ScreenManager
     {
@@ -18,7 +18,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         private RenderTarget2D _renderTarget;
         private Rectangle _renderScaleRectangle;
         private bool initilized;
-        
+
 
         public ScreenManager(Microsoft.Xna.Framework.Game game, int targetResolutionWidth, int targetResolutionHeight)
         {
@@ -37,7 +37,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         public int DesignedResolutionWidth => targetResolutionWidth;
         public int DesignedResolutionHeight => targetResolutionHeight;
 
-        public void Draw(SpriteBatch spriteBatch,Action<SpriteBatch> renderAction,
+        public void Draw(SpriteBatch spriteBatch, Action<SpriteBatch> renderAction,
             SpriteSortMode sortMode = SpriteSortMode.Deferred,
             BlendState blendState = null,
             SamplerState samplerState = null,
@@ -79,8 +79,8 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         public Rectangle GetScaledRect() => new Rectangle(Point.Zero, (_renderScaleRectangle.Size.ToVector2() / (_renderScaleRectangle.Size.ToVector2() / new Vector2(targetResolutionWidth, targetResolutionHeight))).ToPoint());
 
 
-       
-        
+
+
 
         public void SetDesignResolution()
         {
@@ -92,7 +92,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
 
             _renderScaleRectangle = GetScaleRectangle();
 
-           
+
             Rectangle GetScaleRectangle()
             {
                 var variance = 0.5;

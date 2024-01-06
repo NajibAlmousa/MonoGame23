@@ -1,14 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Super_Stomper_Monogame.Modules.BaseClasses;
+using Super_Stomper_Monogame.Modules.BaseClasses.Animations;
+using Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers;
+using Super_Stomper_Monogame.Modules.BaseClasses.Interfaces;
+using Super_Stomper_Monogame.Modules.BaseClasses.Sprites;
 
 
-namespace Super_Stomper_Monogame.Modules.Game
+namespace Super_Stomper_Monogame.Modules.Game.Enemies
 {
     internal class Martian : IEnemy
     {
-       
+
         public Hitbox hitbox;
         public Physics physics;
         public Movement movement;
@@ -39,7 +42,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             movement = new Movement(position);
             physics = new Physics() { dragScale = 0, velocity = direction * speed * Vector2.UnitX };
             sprite = new Sprite(content.Load<Texture2D>(@"Spritesheets\Enemies\AllEnemies"), new Rectangle(0, 0, martianWidth, martianHeight), Vector2.Zero, position);
-            animation = new Animation(sprite.texture, 0.25f, true, new int[] { 0,1 }, sprite.sourceRect.Size);
+            animation = new Animation(sprite.texture, 0.25f, true, new int[] { 0, 1 }, sprite.sourceRect.Size);
             hitbox = new Hitbox(new Rectangle(7, 15, martianWidth - 7 * 2, martianHeight - 15), Vector2.Zero);
 
         }

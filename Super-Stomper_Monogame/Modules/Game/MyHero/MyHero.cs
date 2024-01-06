@@ -2,11 +2,13 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Super_Stomper_Monogame.Modules.BaseClasses;
-using Super_Stomper_Monogame.Screen;
+using Super_Stomper_Monogame.Modules.BaseClasses.Animations;
+using Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers;
+using Super_Stomper_Monogame.Modules.BaseClasses.Sprites;
+using Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers;
 using System;
 
-namespace Super_Stomper_Monogame.Modules.Game
+namespace Super_Stomper_Monogame.Modules.Game.MyHero
 {
     internal class MyHero
     {
@@ -39,7 +41,7 @@ namespace Super_Stomper_Monogame.Modules.Game
         private const int startingLives = 3;
 
         public int lives;
-   
+
         private const int flickerSpeed = 2;
         private const int immunityDuration = 2;
         private const int dieAfter = 2;
@@ -47,9 +49,9 @@ namespace Super_Stomper_Monogame.Modules.Game
         private float immunityTimer;
         private float flickerTimer;
         private float deathTimer;
-     
-       
-        
+
+
+
         public MyHero(ContentManager content, Vector2 position)
         {
             canJump = false;
@@ -83,7 +85,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             if (immune)
                 return;
 
-            lives = System.Math.Clamp(lives - 1, 0, lives);
+            lives = Math.Clamp(lives - 1, 0, lives);
             immune = true;
         }
 
@@ -108,7 +110,7 @@ namespace Super_Stomper_Monogame.Modules.Game
             // valen = dood
             if (movement.position.Y >= Game1.designedResolutionHeight)
                 lives = 0;
-           
+
             movement.Update(deltaTime);
             physics.Update(deltaTime);
 
@@ -144,16 +146,16 @@ namespace Super_Stomper_Monogame.Modules.Game
             //hero jump
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                
+
                 if (canJump)
                 {
-                   
+
                     physics.desiredVelocity.Y -= jumpForce;
                     canJump = true;
                 }
             }
-    
-            physics.desiredVelocity.X = System.Math.Clamp(physics.desiredVelocity.X, -maxSpeed, maxSpeed);
+
+            physics.desiredVelocity.X = Math.Clamp(physics.desiredVelocity.X, -maxSpeed, maxSpeed);
 
             // effect of velocity on position 
             movement.deltaX += physics.desiredVelocity.X * deltaTime;
@@ -161,9 +163,9 @@ namespace Super_Stomper_Monogame.Modules.Game
 
 
             //jumping or falling
-            if(physics.velocity.Y != 0 || prevVelocity.Y != physics.velocity.Y)
+            if (physics.velocity.Y != 0 || prevVelocity.Y != physics.velocity.Y)
             {
-               animation = jumpAnimation;
+                animation = jumpAnimation;
                 canJump = false;
             }
             else if (physics.velocity == Vector2.Zero)

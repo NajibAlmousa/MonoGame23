@@ -5,10 +5,14 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Xna.Framework.Content;
-using Super_Stomper_Monogame.Modules.BaseClasses;
+using Super_Stomper_Monogame.Modules.BaseClasses.Factories;
+using Super_Stomper_Monogame.Modules.BaseClasses.Interfaces;
+using Super_Stomper_Monogame.Modules.BaseClasses.Enums;
+using Super_Stomper_Monogame.Modules.Game.MyHero;
+using Super_Stomper_Monogame.Modules.Game.GameElements;
 
 
-namespace Super_Stomper_Monogame.Modules.Game
+namespace Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers
 {
     internal class MapLoader
     {
@@ -21,7 +25,7 @@ namespace Super_Stomper_Monogame.Modules.Game
 
         public Vector2 position;
 
-        public MyHero myHero { get;  set; }
+        public MyHero myHero { get; set; }
 
 
 
@@ -31,9 +35,9 @@ namespace Super_Stomper_Monogame.Modules.Game
             colliders = new List<Hitbox>();
             enemies = new List<IEnemy>();
             coins = new List<Coins>();
-        
 
-            this.myHero = null;
+
+            myHero = null;
             victoryFlag = null;
             levelMaxWidth = 0;
 
@@ -65,10 +69,10 @@ namespace Super_Stomper_Monogame.Modules.Game
                         position = new Vector2(entity.x, entity.y);
                         switch (entity.name)
                         {
-                        
+
                             case "MyHero":
-                                     //new MyHero(content, new Vector2(entity.x, entity.y));
-                             myHero = HeroFactory.createHero(content, position);
+                                //new MyHero(content, new Vector2(entity.x, entity.y));
+                                myHero = HeroFactory.createHero(content, position);
                                 break;
                             case "Collider":
                                 colliders.Add(new Hitbox(new Rectangle(entity.x, entity.y, (int)entity.width, (int)entity.height), Vector2.Zero));
@@ -105,7 +109,7 @@ namespace Super_Stomper_Monogame.Modules.Game
                     {
                         if (data[j] == -1)
                             continue;
-                        tiles.Add(new Tile(tileset, new Rectangle((data[j] * Tile.tileWidth) % tileset.Width, ((data[j] * Tile.tileWidth) / tileset.Width) * Tile.tileHeight, Tile.tileWidth, Tile.tileHeight), new Vector2((j * levelData.layers[i].gridCellWidth) % levelData.width, ((j * levelData.layers[i].gridCellWidth) / levelData.width) * levelData.layers[i].gridCellHeight)));
+                        tiles.Add(new Tile(tileset, new Rectangle(data[j] * Tile.tileWidth % tileset.Width, data[j] * Tile.tileWidth / tileset.Width * Tile.tileHeight, Tile.tileWidth, Tile.tileHeight), new Vector2(j * levelData.layers[i].gridCellWidth % levelData.width, j * levelData.layers[i].gridCellWidth / levelData.width * levelData.layers[i].gridCellHeight)));
                     }
                 }
             }

@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Super_Stomper_Monogame.Modules.BaseClasses;
+using Super_Stomper_Monogame.Modules.BaseClasses.Animations;
+using Super_Stomper_Monogame.Modules.BaseClasses.GameHandlers;
+using Super_Stomper_Monogame.Modules.BaseClasses.Sprites;
 
 
 namespace Super_Stomper_Monogame.Modules.Game
 {
-    internal class Fire : IEnemy
+    internal class Fire : BaseClasses.Interfaces.IEnemy
     {
         private Sprite sprite;
         private Animation animation;

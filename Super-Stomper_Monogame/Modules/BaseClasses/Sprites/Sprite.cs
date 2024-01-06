@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Super_Stomper_Monogame.Modules.BaseClasses
+namespace Super_Stomper_Monogame.Modules.BaseClasses.Sprites
 {
     internal class Sprite
     {
         public float rotation;
         public float scale;
-      
+
         private Vector2 origin;
         public Color color;
         public SpriteEffects spriteEffects;
@@ -15,7 +15,7 @@ namespace Super_Stomper_Monogame.Modules.BaseClasses
         public Vector2 position { private set; get; }
         public Texture2D texture { private set; get; }
 
-       
+
 
         public Sprite(Texture2D texture, Rectangle sourceRect, Vector2 origin, Vector2? position = null)
         {

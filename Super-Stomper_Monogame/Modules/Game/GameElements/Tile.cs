@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Super_Stomper_Monogame.Modules.BaseClasses;
+using Super_Stomper_Monogame.Modules.BaseClasses.Sprites;
 
-namespace Super_Stomper_Monogame.Modules.Game
+namespace Super_Stomper_Monogame.Modules.Game.GameElements
 {
     internal class Tile
     {
