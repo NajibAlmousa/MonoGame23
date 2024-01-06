@@ -23,7 +23,7 @@ Monogame Project
 
    Collisions met vaste objecten en enemies
 
-- Acceleratie en momentum van held
+   Acceleratie en momentum van held
 
 - Basic AI:
 
@@ -31,18 +31,37 @@ Monogame Project
 
 - Sprites en Tileset/background moet aanwezig zijn
 
-- Geen gekleurde blokjes die over de background color bewegen
+   Geen gekleurde blokjes die over de background color bewegen
 
 - Minstens 2 Design Patterns
+  
+   Factory
+   Command
 
 - Toepassen van SOLID
 
-- Extra folders om klassen in te plaatsen
+   Extra folders om klassen in te plaatsen
 
-- Minstens 3 bewijzen van SOLID gebruik
+   Minstens 3 bewijzen van SOLID gebruik
 
 - Minstens 2 uitgewerkte Extra’s 
+    
+   Hero heeft 3 levens, wanneer hij geraakt wordt is hij onschendbaar en flikkert het figuurtje 
+   
+   Hero kan enemy doden door er langs boven op te springen
 
 - Meer dan 2x “dezelfde code”  oplossen
 
+    Code hergebruiken met functies en methoden, classes
+    
+    Refactoring uitvoeren
+
+
+- Meer punten 
+    
+   Extra extras
+ 
+       Eenemy kan schieten, hero moet ontwijken
+       
+       Hero kan geld verzamelen
 
